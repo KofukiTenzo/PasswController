@@ -1,4 +1,4 @@
-package com.projects.passwcontroller.web;
+package com.projects.passwc.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

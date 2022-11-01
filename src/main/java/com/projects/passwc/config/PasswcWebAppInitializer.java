@@ -1,8 +1,8 @@
-package com.projects.passwcontroller.config;
+package com.projects.passwc.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class PasswControllerWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class PasswcWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{RootConfig.class};

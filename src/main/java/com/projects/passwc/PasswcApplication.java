@@ -1,13 +1,13 @@
-package com.projects.passwcontroller;
+package com.projects.passwc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PasswcontrollerApplication {
+public class PasswcApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PasswcontrollerApplication.class, args);
+		SpringApplication.run(PasswcApplication.class, args);
 	}
 
 }

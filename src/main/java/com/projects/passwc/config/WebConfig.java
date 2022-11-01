@@ -1,4 +1,4 @@
-package com.projects.passwcontroller.config;
+package com.projects.passwc.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.projects.passwcontroller.web")
+@ComponentScan("com.projects.passwc.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
@@ -19,8 +19,17 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                 new InternalResourceViewResolver();
         resolver.setPrefix("WEB-INF/views/");
         resolver.setSuffix(".jsp");
-        resolver.setExposeContextBeansAsAttributes(true);
+//        resolver.setExposeContextBeansAsAttributes(true);
         return resolver;
-
     }
+
+//    @Override
+//    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+//        super.configureDefaultServletHandling(configurer);
+//    }
+//
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        super.addResourceHandlers(registry);
+//    }
 }
