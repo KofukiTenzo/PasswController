@@ -1,15 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="<c:url value="../../resources/style.css" />">
 </head>
 <body>
 <div class="passwdView">
-    <div class="spittleMessage"><c:out value="${passwds.nameOfResource}" /></div>
+    <jsp:useBean id="passwds" scope="request" type="com.projects.passwc.Passwds"/>
+    <c:out value="${passwds.resource_n}" /></div>
     <div>
-        <span class="spittleTime"><c:out value="${passwds.passwd}" /></span>
+        <span class="passwdPass"><c:out value="${passwds.passwd}" /></span>
     </div>
-</div>
 </body>
 </html>

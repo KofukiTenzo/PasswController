@@ -1,6 +1,7 @@
 package com.projects.passwc.config;
 
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
@@ -12,10 +13,12 @@ import java.util.regex.Pattern;
 @Import(DataConfig.class)
 @ComponentScan(basePackages={"com.projects.passwc"},
         excludeFilters={
-                @ComponentScan.Filter(type= FilterType.CUSTOM, value= RootConfig.WebPackage.class)
+                @Filter(type=FilterType.CUSTOM, value= RootConfig.WebPackage.class)
         })
 public class RootConfig {
-        public static class WebPackage extends RegexPatternTypeFilter{
-                public WebPackage(){super(Pattern.compile("passwc\\.web"));}
+        public static class WebPackage extends RegexPatternTypeFilter {
+                public WebPackage() {
+                        super(Pattern.compile("com\\.projects\\.passwc\\.web"));
+                }
         }
 }

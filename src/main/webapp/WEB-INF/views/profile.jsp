@@ -4,9 +4,13 @@
 <html>
 <head>
     <title>Your Profile</title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="<c:url value="../../resources/style.css" />">
 </head>
 <body>
-<c:out value="${passwcUser.username}" /><br/>
-<c:out value="${passwcUser.email}" />
+<jsp:useBean id="PasswcUser" scope="request" type="com.projects.passwc.PasswcUser"/>
+<c:out value="${PasswcUser.username}" /><br/>
+<%--<c:out value="${PasswcUser.email}" />--%>
 </body>
 </html>
