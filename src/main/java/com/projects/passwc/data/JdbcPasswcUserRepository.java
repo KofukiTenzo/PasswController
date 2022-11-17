@@ -15,26 +15,28 @@ public class JdbcPasswcUserRepository implements PasswcUserRepository {
     private JdbcOperations jdbc;
 
     @Autowired
-    public JdbcPasswcUserRepository(JdbcOperations jdbc){
+    public JdbcPasswcUserRepository(JdbcOperations jdbc) {
         this.jdbc = jdbc;
     }
 
     @Override
     public PasswcUser save(PasswcUser passwcUser) {
         jdbc.update(
-                "insert into PasswcUser (username, passwd)" +
-                        " values (?, ?)",
+                "insert into PasswcUser (username, passwd, email)" +
+                        " values (?, ?, ?)",
                 passwcUser.getUsername(),
-                passwcUser.getPasswd());
+                passwcUser.getPasswd(),
+                passwcUser.getEmail());
         return passwcUser;
     }
 
     @Override
     public PasswcUser findByUsername(String username) {
-        return jdbc.queryForObject(
-                "select id, username, null from PasswcUser where username=?",
-                new UserRowMapper(),
-                username);
+//        return jdbc.queryForObject(
+//                "select id, username from PasswcUser where username = ?",
+//                new UserRowMapper(), username);
+        return jdbc.queryForObject("select id, username, null, email from PasswcUser where username = ?",
+                new UserRowMapper(), username);
     }
 
     private static class UserRowMapper implements RowMapper<PasswcUser> {
@@ -42,7 +44,8 @@ public class JdbcPasswcUserRepository implements PasswcUserRepository {
             return new PasswcUser(
                     rs.getLong("id"),
                     rs.getString("username"),
-                    rs.getString("passwd"));
+                    null,
+                    rs.getString("email"));
         }
     }
 }

@@ -21,13 +21,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                 new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
+        resolver.setViewClass(org.springframework.web.servlet.view.JstlView.class);
         return resolver;
     }
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-//        configurer.enable();
-        super.configureDefaultServletHandling(configurer);
+        configurer.enable();
+//        super.configureDefaultServletHandling(configurer);
     }
 
 

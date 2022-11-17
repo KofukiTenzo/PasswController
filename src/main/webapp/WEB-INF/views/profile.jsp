@@ -3,14 +3,27 @@
 
 <html>
 <head>
-    <title>Your Profile</title>
+    <title>PasswcUser</title>
     <link rel="stylesheet"
           type="text/css"
           href="<c:url value="../../resources/style.css" />">
 </head>
 <body>
-<jsp:useBean id="PasswcUser" scope="request" type="com.projects.passwc.PasswcUser"/>
-<c:out value="${PasswcUser.username}" /><br/>
-<%--<c:out value="${PasswcUser.email}" />--%>
+<%--<h1>Hello <c:out value="${username}" /><br/></h1>--%>
+
+<%--&lt;%&ndash;<c:out value="${username}" /><br/>&ndash;%&gt;--%>
+<%--Youre email: <label>--%>
+<%--    <c:out value="${passwcuser.email}"/>--%>
+<%--</label><br/>--%>
+
+<div id="header" th:include="page :: header"></div>
+
+<div id="content">
+    <h1>Your Profile</h1>
+    <c:out value="${username}" /><br/>
+    <c:out value="${email}"/>
+</div>
+
+<div id="footer" th:include="page :: copy"></div>
 </body>
 </html>

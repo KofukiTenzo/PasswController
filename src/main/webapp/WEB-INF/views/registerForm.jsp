@@ -1,23 +1,29 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@page session="false" %>
 <html>
 <head>
-    <title>Passwc</title>
+    <title>PasswcUser</title>
     <link rel="stylesheet" type="text/css"
           href="<c:url value="style.css" />">
 </head>
 <body>
 <h1>Registration</h1>
 
-<form method="post">
-    User Name: <label>
-    <input type="text" name="username"/>
-</label><br/>
-    Password: <label>
-    <input type="text" name="password"/>
-</label><br/>
-    <input type="submit" name="Register">
-</form>
+<sf:form method="post" modelAttribute="passwcUser">
+    <sf:label path="username">User Name</sf:label>:
+        <sf:input path="username" />
+            <sf:errors path="username" cssClass="error" /> <br/>
+
+    <sf:label path="email">Email</sf:label>:
+        <sf:input path="email" type="email"/>
+            <sf:errors path="email" cssClass="error" /> <br/>
+
+    <sf:label path="passwd">Passwd</sf:label>:
+        <sf:password path="passwd" />
+            <sf:errors path="passwd" cssClass="error" /> <br/>
+
+    <input type="submit" value="Register">
+</sf:form>
 </body>
 </html>
