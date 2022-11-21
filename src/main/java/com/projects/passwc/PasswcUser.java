@@ -3,7 +3,9 @@ package com.projects.passwc;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import javax.validation.constraints.Email;
+import org.hibernate.validator.constraints.Email;
+
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -11,15 +13,16 @@ public class PasswcUser {
     private Long id;
 
     @NotNull
-    @Size(min = 5, max = 16)
+    @Size(min = 5, max = 16, message = "Username must be between {min} and {max} characters long.")
     private String username;
 
     @NotNull
     @Email
+    @NotBlank(message = "Email is mandatory")
     private String email;
 
     @NotNull
-    @Size(min = 8, max = 25)
+    @Size(min = 8, max = 15, message = "Password must be between {min} and {max} characters long.")
     private String passwd;
 
     public PasswcUser() {
@@ -70,11 +73,11 @@ public class PasswcUser {
 
     @Override
     public boolean equals(Object that) {
-        return EqualsBuilder.reflectionEquals(this, that, "username", "password");
+        return EqualsBuilder.reflectionEquals(this, that, "username", "email", "password");
     }
 
     @Override
     public int hashCode() {
-        return HashCodeBuilder.reflectionHashCode(this, "username", "password");
+        return HashCodeBuilder.reflectionHashCode(this, "username", "email", "password");
     }
 }

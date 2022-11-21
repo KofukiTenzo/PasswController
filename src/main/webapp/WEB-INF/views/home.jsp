@@ -6,7 +6,8 @@
     <title>Passwc</title>
     <link rel="stylesheet"
           type="text/css"
-          href="<c:url value="../../resources/style.css" />" >
+          href="<c:url value="../../style.css" />" >
+
 </head>
 <body>
 <h1><s:message code="passwc.welcome" text="Welcome" /></h1>

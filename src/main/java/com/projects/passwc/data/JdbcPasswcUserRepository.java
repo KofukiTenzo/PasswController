@@ -22,7 +22,7 @@ public class JdbcPasswcUserRepository implements PasswcUserRepository {
     @Override
     public PasswcUser save(PasswcUser passwcUser) {
         jdbc.update(
-                "insert into PasswcUser (username, passwd, email)" +
+                "insert into passwcuser (username, passwd, email)" +
                         " values (?, ?, ?)",
                 passwcUser.getUsername(),
                 passwcUser.getPasswd(),
@@ -32,11 +32,10 @@ public class JdbcPasswcUserRepository implements PasswcUserRepository {
 
     @Override
     public PasswcUser findByUsername(String username) {
-//        return jdbc.queryForObject(
-//                "select id, username from PasswcUser where username = ?",
-//                new UserRowMapper(), username);
-        return jdbc.queryForObject("select id, username, null, email from PasswcUser where username = ?",
-                new UserRowMapper(), username);
+        return jdbc.queryForObject(
+                "select id, username, email, null from passwcuser where username = ?",
+                new UserRowMapper(),
+                username);
     }
 
     private static class UserRowMapper implements RowMapper<PasswcUser> {
@@ -44,8 +43,9 @@ public class JdbcPasswcUserRepository implements PasswcUserRepository {
             return new PasswcUser(
                     rs.getLong("id"),
                     rs.getString("username"),
-                    null,
-                    rs.getString("email"));
+                    rs.getString("email"),
+                    null
+                    );
         }
     }
 }
