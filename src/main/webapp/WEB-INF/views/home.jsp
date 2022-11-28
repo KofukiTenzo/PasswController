@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<h1><s:message code="passwc.welcome" text="Welcome" /></h1>
+<h1><s:message code="passwc.welcome"/></h1>
 
 <s:url value="/user/register" var="registerUrl" />
 

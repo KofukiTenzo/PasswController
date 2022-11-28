@@ -18,29 +18,23 @@
 
     <sf:form method="post" modelAttribute="passwcUser">
 
-    <div class="user-box">
         <sf:label path="username"
                   cssErrorClass="error">Username</sf:label>:
-        <sf:input path="username"/>
+        <sf:input path="username" cssErrorClass="error"/>
         <sf:errors path="username" element="errors" cssClass="error"/> <br/>
-    </div>
 
-    <div class="user-box">
         <sf:label path="email"
                   cssErrorClass="error">Email</sf:label>:
-        <sf:input path="email"/>
+        <sf:input path="email" cssErrorClass="error"/>
         <sf:errors path="email" element="errors" cssClass="error"/> <br/>
-        <div/>
 
-        <div class="user-box">
-            <sf:label path="passwd"
-                      cssErrorClass="error">Password</sf:label>:
-            <sf:password path="passwd"/>
-            <sf:errors path="passwd" element="errors" cssClass="error"/> <br/>
-        </div>
+        <sf:label path="passwd"
+                  cssErrorClass="error">Password</sf:label>:
+        <sf:password path="passwd" cssErrorClass="error"/>
+        <sf:errors path="passwd" element="errors" cssClass="error"/> <br/>
 
         <input type="submit" value="Register">
-        </sf:form>
-    </div>
+    </sf:form>
+</div>
 </body>
 </html>

@@ -2,10 +2,8 @@ package com.projects.passwc;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 import org.hibernate.validator.constraints.Email;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -17,8 +15,8 @@ public class PasswcUser {
     private String username;
 
     @NotNull
-    @Email
-    @NotBlank(message = "Email is mandatory")
+    @Email(message = "Email is mandatory.")
+//    @NotBlank(message = "Email is mandatory")
     private String email;
 
     @NotNull
