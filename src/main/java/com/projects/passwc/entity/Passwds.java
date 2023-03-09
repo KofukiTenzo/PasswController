@@ -1,4 +1,4 @@
-package com.projects.passwc;
+package com.projects.passwc.entity;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;

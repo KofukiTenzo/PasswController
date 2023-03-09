@@ -1,7 +1,9 @@
 package com.projects.passwc.config;
 
+import org.apache.catalina.security.SecurityConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -12,20 +14,16 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import javax.sql.DataSource;
 
 @Configuration
+@Import({SecurityConfig.class})
 public class DataConfig {
 
     @Bean
     public DataSource dataSource() {
-//        return new EmbeddedDatabaseBuilder()
-//                .setType(EmbeddedDatabaseType.H2)
-//                .addScript("schema.sql")
-//                .build();
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/passwc");
         dataSource.setUsername("root");
-        dataSource.setPassword("root");
-//        dataSource.setSchema("schema.sql");
+        dataSource.setPassword("Rusl@n1337");
         return dataSource;
     }
 

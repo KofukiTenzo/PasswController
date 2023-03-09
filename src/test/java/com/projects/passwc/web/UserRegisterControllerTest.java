@@ -1,6 +1,6 @@
 package com.projects.passwc.web;
 
-import com.projects.passwc.data.PasswcUserRepository;
+import com.projects.passwc.data.UserRegisterRepository;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -9,12 +9,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
-public class PasswcUserControllerTest {
+public class UserRegisterControllerTest {
     @Test
     public void shouldShowRegistration() throws Exception{
-        PasswcUserRepository mockRepository = mock(PasswcUserRepository.class);
+        UserRegisterRepository mockRepository = mock(UserRegisterRepository.class);
 
-        PasswcUserController controller = new PasswcUserController(mockRepository);
+        UserRegisterController controller = new UserRegisterController(mockRepository);
 
         MockMvc mockMvc = standaloneSetup(controller).build();
         mockMvc.perform(get("/user/register"))

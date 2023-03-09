@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html" charset="UTF-8">
+    <title>Passwds</title>
+
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{../static/css/style.css}"/>
+</head>
+<body>
+<div id="header" th:include="page :: header"></div>
+
+<div id="content">
+    <div class="passwdForm">
+        <h1>Add Passwd</h1>
+        <form id="passwdsForm" method="POST" name="passwdsForm">
+            <label>Name of resource</label>:
+            <textarea name="resource_n" cols="50" rows="1"></textarea>
+            <label>Password</label>:
+            <textarea name="passwd" cols="50" rows="1"></textarea><br/>
+            <input id="addPass" type="submit" value="Add"/>
+        </form>
+    </div>
+    <div class="listTitle">
+        <h1>Recent Passwds</h1>
+        <ul class="passwdsList">
+            <li th:each="passwds : ${passwdsList}"
+                th:id="'passwds_' + ${passwds.id}">
+
+                <div class="resource_name">
+                    <label>Name of resource</label>:
+                    <span class="resource_name" th:text="${passwds.resource_n}">Resource Name</span>
+                </div>
+
+                <div class="passwd">
+                    <label>Password</label>:
+                    <span class="passwd" th:text="${passwds.passwd}">Passwd</span>
+                </div>
+
+                <div>
+                    <label>Date of add</label>:
+                    <span class="time" th:text="${passwds.creation_date}">Timestamp</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="footer" th:include="page :: copy"></div>
+</body>
+</html>

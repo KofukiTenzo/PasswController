@@ -1,6 +1,6 @@
 package com.projects.passwc.web;
 
-import com.projects.passwc.Passwds;
+import com.projects.passwc.entity.Passwds;
 import com.projects.passwc.data.PasswdsRepository;
 
 //import org.junit.jupiter.api.Test;
@@ -25,7 +25,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;

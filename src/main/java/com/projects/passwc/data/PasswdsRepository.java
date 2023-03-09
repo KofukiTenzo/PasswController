@@ -1,6 +1,6 @@
 package com.projects.passwc.data;
 
-import com.projects.passwc.Passwds;
+import com.projects.passwc.entity.Passwds;
 
 import java.util.List;
 
