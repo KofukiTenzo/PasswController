@@ -3,9 +3,7 @@ package com.projects.passwc.entity;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.validator.constraints.Email;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -22,7 +20,7 @@ public class User {
     private String email;
 
     @NotNull
-    @Size(min = 8, max = 15, message = "Password must be between {min} and {max} characters long.")
+    @Size(min = 8, max = 16, message = "Password must be between {min} and {max} characters long.")
     private String password;
 
     public User() {

@@ -1,14 +1,27 @@
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-      
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
   <body>
-  
+
     <div th:fragment="header">
-        <img id="logo" th:src="@{../static/img/logo.png}" border="0"/>
+        <a th:href="@{/}">
+            <img id="logo" th:src="@{../static/img/logo.png}" border="0"/></a>
+
+
+        <a sec:authorize="isAuthenticated()" id="logout" th:href="@{/logout}">Logout</a>
+        <a sec:authorize="isAuthenticated()" id="Profile" th:href="@{/user/profile}">Profile</a>
+
+        <a sec:authorize="!isAuthenticated()" id="register" th:href="@{/register}">Register</a>
+            <a th:if="${!#httpServletRequest.getRequestURI().contains('/login')}"
+                    sec:authorize="!isAuthenticated()" id="login" th:href="@{/login}">Login</a>
+
+
     </div>
 
     <div>Content goes here</div>
-  
+
     <div th:fragment="copy">Copyright &copy; Ruslan Kharchenko</div>
   </body>
-  
+
 </html>

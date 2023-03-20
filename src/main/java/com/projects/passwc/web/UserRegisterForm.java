@@ -2,11 +2,17 @@ package com.projects.passwc.web;
 
 import com.projects.passwc.entity.User;
 import org.hibernate.validator.constraints.Email;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class UserRegisterForm {
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
     @NotNull
     @Size(min = 5, max = 16, message = "Username must be between {min} and {max} characters long.")
     private String username;
@@ -16,7 +22,7 @@ public class UserRegisterForm {
     private String email;
 
     @NotNull
-    @Size(min = 8, max = 15, message = "Password must be between {min} and {max} characters long.")
+    @Size(min = 8, max = 16, message = "Password must be between {min} and {max} characters long.")
     private String password;
 
     public String getUsername() {
@@ -44,6 +50,6 @@ public class UserRegisterForm {
     }
 
     public User toUser() {
-        return new User(username, email, password);
+        return new User(username, email, bCryptPasswordEncoder.encode(password));
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Description;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -32,19 +33,20 @@ public class WebConfig implements WebMvcConfigurer{
 
     @Bean
     @Description("Thymeleaf template engine with Spring integration")
-    public SpringTemplateEngine templateEngine() {
+    public SpringTemplateEngine templateEngine(ClassLoaderTemplateResolver templateResolver) {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
 
-        templateEngine.setTemplateResolver(templateResolver());
+        templateEngine.setTemplateResolver(templateResolver);
+        templateEngine.addDialect(new SpringSecurityDialect());
         return templateEngine;
     }
 
     @Bean
     @Description("Thymeleaf view resolver")
-    public ViewResolver viewResolver() {
+    public ViewResolver viewResolver(SpringTemplateEngine templateEngine) {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
 
-        viewResolver.setTemplateEngine(templateEngine());
+        viewResolver.setTemplateEngine(templateEngine);
         viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
     }
@@ -61,9 +63,9 @@ public class WebConfig implements WebMvcConfigurer{
         configurer.enable();
     }
 
-//    public void addViewControllers(ViewControllerRegistry registry) {
-//        registry.addViewController("/login").setViewName("loginForm");
-//    }
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
+    }
 
     @Bean
     public ResourceBundleMessageSource messageSource() {

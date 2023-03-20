@@ -7,7 +7,49 @@ body {
     background-color: #508991;
 }
 
-#passwds, #register, #login {
+#register {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 8px;
+}
+
+#login {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 105px;
+}
+
+#logout {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 8px;
+}
+
+#passwds {
     background-color: #09bc8a;
     color: #172a3a;
     padding: 14px 20px;
@@ -15,10 +57,15 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 #footer {
     color: #172a3a;
+    position: absolute;
+    top: 99vh;
+    transform: translateY(-100%);
+    width: 99%;
 }
 
 #logo {
@@ -36,11 +83,12 @@ body {
     background-color: #508991;
     padding: 20px;
     color: #172a3a;
+
 }
 
 input[type=text],
 input[type=password] {
-    width: 100%;
+    width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -51,8 +99,8 @@ input[type=password] {
 }
 
 #registerBtn,
-#loginBtn{
-    width: 100%;
+#loginBtn {
+    width: 25%;
     background-color: #09bc8a;
     color: #172a3a;
     padding: 14px 20px;
@@ -62,7 +110,7 @@ input[type=password] {
     cursor: pointer;
 }
 
-#addPass{
+#addPass {
     width: 30%;
     background-color: #09bc8a;
     color: #172a3a;
@@ -71,4 +119,15 @@ input[type=password] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+#formLogin, #formReg{
+    position: absolute; /* set the form's position to absolute */
+    top: 0; /* set the top position to 0 */
+    bottom: 0; /* set the bottom position to 0 */
+    left: 550px; /* set the left position to 0 */
+    right: 0; /* set the right position to 0 */
+    margin: auto; /* set the margins to "auto" */
+    width: 50%; /* set the width of the form */
+    height: 50%; /* set the height of the form */
 }
