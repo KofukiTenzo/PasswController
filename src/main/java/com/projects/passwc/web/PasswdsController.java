@@ -1,6 +1,6 @@
 package com.projects.passwc.web;
 
-import com.projects.passwc.entity.Passwds;
+import com.projects.passwc.DAO.Passwds;
 import com.projects.passwc.data.PasswdsRepository;
 import com.projects.passwc.forms.PasswdForm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -26,10 +25,11 @@ public class PasswdsController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Passwds> passwds(
-            @RequestParam(value = "max", defaultValue = Long.MAX_VALUE + "") long max,
-            @RequestParam(value = "count", defaultValue = "20") int count) {
-        return passwdsRepository.findPasswds(max, count);
+    public List<Passwds> passwds()
+//            @RequestParam(value = "max", defaultValue = Long.MAX_VALUE + "") long max,
+//            @RequestParam(value = "count", defaultValue = "20") int count)
+            {
+        return passwdsRepository.findRecent();
     }
 
     @RequestMapping(value = "/{passwdId}", method = RequestMethod.GET)

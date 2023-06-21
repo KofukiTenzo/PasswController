@@ -1,7 +1,8 @@
 package com.projects.passwc.web;
 
 import com.projects.passwc.data.UserRegisterRepository;
-import com.projects.passwc.entity.User;
+import com.projects.passwc.DAO.User;
+import com.projects.passwc.forms.UserRegisterForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +36,6 @@ public class UserRegisterController {
 
         User user = userRegisterForm.toUser();
         userRegisterRepository.save(user);
-//        return "redirect:/user/" + user.getUsername();
         return "redirect:/user/profile";
     }
 }

@@ -38,27 +38,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder());
     }
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//
-//        http.authorizeRequests()
-//                .antMatchers("/", "/homepage").permitAll()
-//                .antMatchers("/profile").authenticated()
-//                .and()
-//                .formLogin().permitAll()
-//                .loginPage("/login")
-//                .loginProcessingUrl("/perform-login")
-//                .usernameParameter("username")
-//                .passwordParameter("password")
-//                .defaultSuccessUrl("/profile");
-//    }
-
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                     .formLogin()
                         .loginPage("/login")
+                        .defaultSuccessUrl("/user/profile", true)
                 .and()
                     .logout()
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -78,8 +63,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers(HttpMethod.POST, "/passwds").authenticated()
                         .antMatchers("/user/**").authenticated()
                         .anyRequest().permitAll();
-//                .and()
-//                    .requiresChannel()
-//                        .antMatchers("/user/register").requiresSecure();
     }
 }

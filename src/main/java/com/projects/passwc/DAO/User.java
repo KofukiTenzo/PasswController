@@ -1,37 +1,43 @@
-package com.projects.passwc.entity;
+package com.projects.passwc.DAO;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.hibernate.validator.constraints.Email;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
 
+@Entity
 public class User {
-
-    private Long id;
-
-    @NotNull
-    @Size(min = 5, max = 16, message = "Username must be between {min} and {max} characters long.")
-    private String username;
-
-    @NotNull
-    @Email(message = "Email is mandatory.")
-    private String email;
-
-    @NotNull
-    @Size(min = 8, max = 16, message = "Password must be between {min} and {max} characters long.")
-    private String password;
 
     public User() {
     }
 
-    public User(String username, String email, String password) {
-        this(null, username, email, password);
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    //    @NotNull
+//    @Size(min = 5, max = 16, message = "Username must be between {min} and {max} characters long.")
+    @Column(name = "username")
+    private String username;
+
+    //    @NotNull
+//    @Email(message = "Email is mandatory.")
+    @Column(name="email")
+    private String email;
+
+    //    @NotNull
+//    @Size(min = 8, max = 16, message = "Password must be between {min} and {max} characters long.")
+    @Column(name="password")
+    private String password;
 
     public User(Long id, String username, String email, String password) {
         this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -41,32 +47,16 @@ public class User {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getUsername() {
         return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override

@@ -2,16 +2,20 @@ package com.projects.passwc.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.JdbcOperations;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
+@EnableTransactionManagement
 public class DataConfig {
 
     @Bean
@@ -25,7 +29,7 @@ public class DataConfig {
     }
 
     @Bean
-    public JpaVendorAdapter jpaVendorAdapter(){
+    public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setDatabase(Database.MYSQL);
         adapter.setShowSql(true);
@@ -36,8 +40,21 @@ public class DataConfig {
     }
 
     @Bean
-    public JdbcOperations jdbcTemplate(DataSource dataSource) {
-        return new JdbcTemplate(dataSource);
+    public LocalSessionFactoryBean sessionFactory() {
+        LocalSessionFactoryBean sfb = new LocalSessionFactoryBean();
+        sfb.setDataSource(dataSource());
+        sfb.setPackagesToScan("com.projects.passwc.DAO");
+        Properties properties = new Properties();
+        properties.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
+        sfb.setHibernateProperties(properties);
+        return sfb;
     }
 
+    @Bean
+    public PlatformTransactionManager hibernateTransactionManager() {
+        HibernateTransactionManager transactionManager
+                = new HibernateTransactionManager();
+        transactionManager.setSessionFactory(sessionFactory().getObject());
+        return transactionManager;
+    }
 }

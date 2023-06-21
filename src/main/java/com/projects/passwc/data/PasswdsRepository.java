@@ -1,15 +1,22 @@
 package com.projects.passwc.data;
 
-import com.projects.passwc.entity.Passwds;
+import com.projects.passwc.DAO.Passwds;
 
 import java.util.List;
 
 public interface PasswdsRepository {
-    List<Passwds> findRecentPasswds();
 
-    List<Passwds> findPasswds(long max, int count);
+    long count();
+
+    List<Passwds> findRecent();
+
+    List<Passwds> findRecent(int count);
 
     Passwds findOne(long id);
 
-    void save(Passwds passwds);
+    Passwds save(Passwds passwds);
+
+    List<Passwds> findByPasswdId(long passwdId);
+
+    void delete(long id);
 }

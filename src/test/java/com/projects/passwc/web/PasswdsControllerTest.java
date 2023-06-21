@@ -1,35 +1,21 @@
 package com.projects.passwc.web;
 
-import com.projects.passwc.entity.Passwds;
+import com.projects.passwc.DAO.Passwds;
 import com.projects.passwc.data.PasswdsRepository;
-
-//import org.junit.jupiter.api.Test;
-//import org.springframework.test.web.servlet.MockMvc;
-//import org.springframework.web.servlet.view.InternalResourceView;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import static org.hamcrest.Matchers.hasItems;
-//import static org.mockito.Mockito.mock;
-//import static org.mockito.Mockito.when;
-//import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-//import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
-
-import static org.hamcrest.Matchers.*;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
+import org.junit.Test;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.servlet.view.InternalResourceView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.servlet.view.InternalResourceView;
+import static org.hamcrest.Matchers.hasItems;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 public class PasswdsControllerTest {
 
@@ -38,8 +24,8 @@ public class PasswdsControllerTest {
         List<Passwds> expectedPasswds = createPasswdList(20);
 
         PasswdsRepository mockRepository = mock(PasswdsRepository.class);
-        when(mockRepository.findPasswds(Long.MAX_VALUE, 20))
-                .thenReturn(expectedPasswds);
+//        when(mockRepository.findPasswds(Long.MAX_VALUE, 20))
+//                .thenReturn(expectedPasswds);
 
         PasswdsController controller = new PasswdsController(mockRepository);
 
@@ -60,8 +46,8 @@ public class PasswdsControllerTest {
         List<Passwds> expectedPasswds = createPasswdList(50);
 
         PasswdsRepository mockRepository = mock(PasswdsRepository.class);
-        when(mockRepository.findPasswds(238900, 50))
-                .thenReturn(expectedPasswds);
+//        when(mockRepository.findPasswds(238900, 50))
+//                .thenReturn(expectedPasswds);
 
         PasswdsController controller = new PasswdsController(mockRepository);
 
