@@ -6,15 +6,22 @@
 
     <div th:fragment="header">
         <a th:href="@{/}">
-            <img id="logo" th:src="@{../static/img/logo.png}" border="0"/></a>
+            <img id="logo" th:src="@{../static/img/passwc-logo.png}" border="0"/>
+        </a>
 
 
         <a sec:authorize="isAuthenticated()" id="logout" th:href="@{/logout}">Logout</a>
-        <a sec:authorize="isAuthenticated()" id="Profile" th:href="@{/user/profile}">Profile</a>
+        <a sec:authorize="isAuthenticated()" id="profileBtn" th:href="@{/user/profile}">Profile</a>
+
+        <a sec:authorize="isAuthenticated()" id="passwdsList" th:href="@{/passwds}">Passwds</a>
+        <a sec:authorize="isAuthenticated()" id="addPasswd" th:href="@{/passwds/addPasswd}">Add password</a>
+        <a sec:authorize="isAuthenticated()" id="generatePass" th:href="@{/passwds/generate}">Generate</a>
 
         <a sec:authorize="!isAuthenticated()" id="register" th:href="@{/register}">Register</a>
             <a th:if="${!#httpServletRequest.getRequestURI().contains('/login')}"
                     sec:authorize="!isAuthenticated()" id="login" th:href="@{/login}">Login</a>
+
+
 
 
     </div>

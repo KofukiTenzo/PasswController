@@ -1,14 +1,14 @@
 package com.projects.passwc.web;
 
-import com.projects.passwc.data.UserRegisterRepository;
 import com.projects.passwc.DAO.User;
+import com.projects.passwc.data.UserRegisterRepository;
 import com.projects.passwc.forms.UserRegisterForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -22,13 +22,15 @@ public class UserRegisterController {
         this.userRegisterRepository = userRegisterRepository;
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+//    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @GetMapping("/register")
     public String showRegistrationForm(Model model) {
-        model.addAttribute(new User());
+        model.addAttribute("userRegisterForm", new UserRegisterForm());
         return "registerForm";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+//    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping("/register")
     public String processRegistration(@Valid UserRegisterForm userRegisterForm,
                                       Errors errors) throws IllegalStateException, IOException {
         if (errors.hasErrors())

@@ -15,32 +15,28 @@
     <div id="contentRegister">
         <h1>Register</h1>
 
-        <form id="formReg" method="POST" th:object="${user}" th:action="@{/register}">
-            <div class="errors" th:if="${#fields.hasErrors('*')}">
-                <ul>
-                    <li th:each="err : ${#fields.errors('*')}"
-                        th:text="${err}">Input is incorrect
-                    </li>
-                </ul>
+        <form id="formReg" th:action="@{/register}" th:object="${userRegisterForm}" method="post">
+            <div>
+                <label>Username:</label><br/>
+                <input id="register_username_field" type="text" th:field="*{username}" />
+                <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
             </div>
 
-            <label th:class="${#fields.hasErrors('email')}? 'error'">Email</label>
-            <br/>
-            <input id="register_email_field" type="text" th:field="*{email}"
-                   th:class="${#fields.hasErrors('email')}? 'error'"/><br/>
+            <div>
+                <label>Email:</label><br/>
+                <input id="register_email_field" type="text" th:field="*{email}" />
+                <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </div>
 
-            <label th:class="${#fields.hasErrors('username')}? 'error'">Username</label>
-            <br/>
-            <input id="register_username_field" type="text" th:field="*{username}"
-                   th:class="${#fields.hasErrors('username')}? 'error'"/><br/>
+            <div>
+                <label>Password:</label><br/>
+                <input id="register_password_field" type="password" th:field="*{password}" />
+                <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+            </div>
 
-            <label th:class="${#fields.hasErrors('password')}? 'error'">Password</label>
-            <br/>
-            <input id="register_password_field" type="password" th:field="*{password}"
-                   th:class="${#fields.hasErrors('password')}? 'error'"/><br/>
-            <input id="registerBtn" type="submit" value="Register"/>
-
+            <button id="registerBtn" type="submit">Register</button>
         </form>
+
     </div>
 
     <div id="footer" th:include="page :: copy"></div>

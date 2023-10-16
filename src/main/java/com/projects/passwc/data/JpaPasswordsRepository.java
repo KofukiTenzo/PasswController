@@ -21,13 +21,14 @@ public class JpaPasswordsRepository implements PasswdsRepository {
     }
 
     @Override
-    public List<Passwds> findRecent() {
-        return findRecent(10);
+    public List<Passwds> findRecent(String username) {
+        return findRecent(username, 10);
     }
 
     @Override
-    public List<Passwds> findRecent(int count) {
-        return (List<Passwds>) entityManager.createQuery("select p from Passwds p order by p.creation_date desc")
+    public List<Passwds> findRecent(String username, int count) {
+        return (List<Passwds>) entityManager.createQuery("select p from Passwds p where p.user=?1 order by p.creation_date desc")
+                .setParameter(1, username)
                 .setMaxResults(count)
                 .getResultList();
     }

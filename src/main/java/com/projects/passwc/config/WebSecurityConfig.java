@@ -3,7 +3,6 @@ package com.projects.passwc.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -11,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
@@ -58,9 +58,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .httpBasic()
                         .realmName("Passwc")
                 .and()
+                    .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) // Використовуємо токен у формі та через кукі
+                .and()
                     .authorizeRequests()
-                        .antMatchers(HttpMethod.POST, "/passwds").authenticated()
-                        .antMatchers(HttpMethod.POST, "/passwds").authenticated()
+//                        .antMatchers(HttpMethod.POST, "/passwds").authenticated()
+                        .antMatchers("/passwds/**").authenticated()
                         .antMatchers("/user/**").authenticated()
                         .anyRequest().permitAll();
     }

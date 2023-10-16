@@ -2,91 +2,160 @@ package com.projects.passwc.web;
 
 import com.projects.passwc.DAO.Passwds;
 import com.projects.passwc.data.PasswdsRepository;
-import org.junit.Test;
+import com.projects.passwc.forms.PasswdForm;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.servlet.view.InternalResourceView;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.security.Principal;
+import java.util.Collections;
 
-import static org.hamcrest.Matchers.hasItems;
-import static org.mockito.Mockito.mock;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class PasswdsControllerTest {
 
-    @Test
-    public void shouldShowRecentPasswds() throws Exception {
-        List<Passwds> expectedPasswds = createPasswdList(20);
+//    @Test
+//    public void shouldShowRecentPasswds() throws Exception {
+//        List<Passwds> expectedPasswds = createPasswdList(20);
+//
+//        PasswdsRepository mockRepository = mock(PasswdsRepository.class);
+////        when(mockRepository.findPasswds(Long.MAX_VALUE, 20))
+////                .thenReturn(expectedPasswds);
+//
+//        PasswdsController controller = new PasswdsController(mockRepository);
+//
+//        MockMvc mockMvc = standaloneSetup(controller)
+//                .setSingleView(
+//                        new InternalResourceView("/WEB-INF/views/passwds.jsp"))
+//                .build();
+//
+//        mockMvc.perform(get("/passwds"))
+//                .andExpect(view().name("passwds"))
+//                .andExpect(model().attributeExists("passwdList"))
+//                .andExpect(model().attribute("passwdList",
+//                        hasItems(expectedPasswds.toArray())));
+//    }
 
-        PasswdsRepository mockRepository = mock(PasswdsRepository.class);
-//        when(mockRepository.findPasswds(Long.MAX_VALUE, 20))
-//                .thenReturn(expectedPasswds);
+//    @Test
+//    public void shouldShowPagedPasswds() throws Exception {
+//        List<Passwds> expectedPasswds = createPasswdList(50);
+//
+//        PasswdsRepository mockRepository = mock(PasswdsRepository.class);
+////        when(mockRepository.findPasswds(238900, 50))
+////                .thenReturn(expectedPasswds);
+//
+//        PasswdsController controller = new PasswdsController(mockRepository);
+//
+//        MockMvc mockMvc = standaloneSetup(controller)
+//                .setSingleView(
+//                        new InternalResourceView("/WEB-INF/views/passwds.jsp"))
+//                .build();
+//
+//        mockMvc.perform(get("/passwds?max=238900&count=50"))
+//                .andExpect(view().name("passwds"))
+//                .andExpect(model().attributeExists("passwdList"))
+//                .andExpect(model().attribute("passwdList",
+//                        hasItems(expectedPasswds.toArray())));
+//    }
 
-        PasswdsController controller = new PasswdsController(mockRepository);
+//    @Test
+//    public void testPasswd() throws Exception {
+//        Passwds expectedPasswd = new Passwds("Googel", "Qwerty123");
+//
+//        PasswdsRepository mockRepository = mock(PasswdsRepository.class);
+//        when(mockRepository.findOne(12345))
+//                .thenReturn(expectedPasswd);
+//
+//        PasswdsController controller = new PasswdsController(mockRepository);
+//
+//        MockMvc mockMvc = standaloneSetup(controller).build();
+//
+//        mockMvc.perform(get("/passwds/12345"))
+//                .andExpect(view().name("passwd"))
+//                .andExpect(model().attributeExists("passwd"))
+//                .andExpect(model().attribute("passwd", expectedPasswd));
+//    }
+//
+//    private List<Passwds> createPasswdList(int count) {
+//        List<Passwds> passwds = new ArrayList<Passwds>();
+//
+//        for (int i = 0; i < count; i++) {
+//            passwds.add(new Passwds("GitHub", "new pass " + i));
+//        }
+//        return passwds;
+//    }
 
-        MockMvc mockMvc = standaloneSetup(controller)
-                .setSingleView(
-                        new InternalResourceView("/WEB-INF/views/passwds.jsp"))
-                .build();
 
-        mockMvc.perform(get("/passwds"))
-                .andExpect(view().name("passwds"))
-                .andExpect(model().attributeExists("passwdList"))
-                .andExpect(model().attribute("passwdList",
-                        hasItems(expectedPasswds.toArray())));
+    @Mock
+    private PasswdsRepository passwdsRepository;
+
+    @InjectMocks
+    private PasswdsController passwdsController;
+
+    private MockMvc mockMvc;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        mockMvc = MockMvcBuilders.standaloneSetup(passwdsController).build();
     }
 
     @Test
-    public void shouldShowPagedPasswds() throws Exception {
-        List<Passwds> expectedPasswds = createPasswdList(50);
-
-        PasswdsRepository mockRepository = mock(PasswdsRepository.class);
-//        when(mockRepository.findPasswds(238900, 50))
-//                .thenReturn(expectedPasswds);
-
-        PasswdsController controller = new PasswdsController(mockRepository);
-
-        MockMvc mockMvc = standaloneSetup(controller)
-                .setSingleView(
-                        new InternalResourceView("/WEB-INF/views/passwds.jsp"))
-                .build();
-
-        mockMvc.perform(get("/passwds?max=238900&count=50"))
-                .andExpect(view().name("passwds"))
-                .andExpect(model().attributeExists("passwdList"))
-                .andExpect(model().attribute("passwdList",
-                        hasItems(expectedPasswds.toArray())));
+    public void showPasswordForm_ShouldRenderPasswdFormView() throws Exception {
+        mockMvc.perform(get("/passwds/addPasswd"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("passwdForm"))
+                .andExpect(model().attributeExists("passwdForm"));
     }
 
     @Test
-    public void testPasswd() throws Exception {
-        Passwds expectedPasswd = new Passwds("Googel", "Qwerty123");
+    public void generatePassword_ShouldReturnGeneratedPassword() throws Exception {
+        String generatedPassword = "Abc123@";
+        PasswdForm passwdForm = new PasswdForm();
 
-        PasswdsRepository mockRepository = mock(PasswdsRepository.class);
-        when(mockRepository.findOne(12345))
-                .thenReturn(expectedPasswd);
+        when(passwdsRepository.findRecent(any())).thenReturn(Collections.emptyList());
 
-        PasswdsController controller = new PasswdsController(mockRepository);
-
-        MockMvc mockMvc = standaloneSetup(controller).build();
-
-        mockMvc.perform(get("/passwds/12345"))
-                .andExpect(view().name("passwd"))
-                .andExpect(model().attributeExists("passwd"))
-                .andExpect(model().attribute("passwd", expectedPasswd));
+        mockMvc.perform(get("/passwds/generatePassword")
+                        .param("useLower", "true")
+                        .param("useUpper", "true")
+                        .param("useDigits", "true")
+                        .param("usePunctuation", "true")
+                        .param("length", "8")
+                        .flashAttr("passwdForm", passwdForm))
+                .andExpect(status().isOk())
+                .andExpect(content().string(generatedPassword));
     }
 
-    private List<Passwds> createPasswdList(int count) {
-        List<Passwds> passwds = new ArrayList<Passwds>();
+    @Test
+    public void savePasswd_ShouldRedirectToPasswds() throws Exception {
+        PasswdForm passwdForm = new PasswdForm();
+        Principal principal = () -> "user1";
 
-        for (int i = 0; i < count; i++) {
-            passwds.add(new Passwds("GitHub", "new pass " + i));
-        }
-        return passwds;
+        when(passwdsRepository.save(any())).thenReturn(new Passwds());
+
+        mockMvc.perform(post("/passwds/addPasswd")
+                        .flashAttr("passwdForm", passwdForm)
+                        .principal(principal))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/passwds"));
+    }
+
+    @Test
+    public void savePasswd_WithErrors_ShouldRenderPasswdFormView() throws Exception {
+        PasswdForm passwdForm = new PasswdForm();
+        passwdForm.setResourceName("Test Resource"); // Add some valid data
+
+        mockMvc.perform(post("/passwds/addPasswd")
+                        .flashAttr("passwdForm", passwdForm))
+                .andExpect(status().isOk())
+                .andExpect(view().name("passwdForm"));
     }
 }

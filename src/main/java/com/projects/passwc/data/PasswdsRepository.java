@@ -8,9 +8,9 @@ public interface PasswdsRepository {
 
     long count();
 
-    List<Passwds> findRecent();
+    List<Passwds> findRecent(String username);
 
-    List<Passwds> findRecent(int count);
+    List<Passwds> findRecent(String username, int count);
 
     Passwds findOne(long id);
 

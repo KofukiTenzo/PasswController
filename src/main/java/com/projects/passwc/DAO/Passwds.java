@@ -4,36 +4,46 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "passwds")
 public class Passwds {
-
-    public Passwds() {}
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+//    @OneToMany
     @JoinColumn(name = "user")
-    private User user;
+    private String user;
 
-    @Column
+    @Column(name = "resourceName")
     private String resourceName;
-    @Column
+    @Column(name = "passwd")
     private String passwd;
-    @Column
+    @Column(name = "creation_date")
     private Date creation_date;
 
-    public Passwds(String resourceName, String passwd) {
-        this(null, null, resourceName, passwd, new Date());
-    }
 
-    public Passwds(Long id, User user, String resourceName, String passwd, Date creation_date) {
-        this.id = id;
+
+    public Passwds() {}
+
+//    public Passwds(String resourceName, String passwd) {
+//        this(null, null, resourceName, passwd, new Date());
+//    }
+
+    public Passwds(String user, String resourceName, String passwd){
         this.user = user;
         this.resourceName = resourceName;
         this.passwd = passwd;
-        this.creation_date = creation_date;
+        this.creation_date = new Date();
     }
+
+//    public Passwds(Long id, String user, String resourceName, String passwd, Date creation_date) {
+//        this.id = id;
+//        this.user = user;
+//        this.resourceName = resourceName;
+//        this.passwd = passwd;
+//        this.creation_date = creation_date;
+//    }
 
     public Long getId() {
         return id;
@@ -51,7 +61,7 @@ public class Passwds {
         return creation_date;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 }

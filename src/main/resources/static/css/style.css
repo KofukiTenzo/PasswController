@@ -49,6 +49,62 @@ body {
     right: 8px;
 }
 
+#profileBtn {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 105px;
+}
+
+#passwdsList {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 20px 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 635px;
+}
+
+#addPasswd {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 20px 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 490px;
+}
+
+#generatePass {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 400px;
+}
+
 #passwds {
     background-color: #09bc8a;
     color: #172a3a;
@@ -69,8 +125,8 @@ body {
 }
 
 #logo {
-    width: 100px;
-    height: 90px;
+    width: 110px;
+    height: 85px;
 }
 
 #content {
@@ -110,8 +166,19 @@ input[type=password] {
     cursor: pointer;
 }
 
-#addPass {
+#addPass{
     width: 30%;
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#generate{
+    width: 5%;
     background-color: #09bc8a;
     color: #172a3a;
     padding: 14px 20px;
@@ -131,3 +198,43 @@ input[type=password] {
     width: 50%; /* set the width of the form */
     height: 50%; /* set the height of the form */
 }
+
+/*.error {*/
+/*    color: red;*/
+/*    display: block;*/
+/*    margin-top: 5px;*/
+/*}*/
+
+.error {
+    display: block;
+    margin-top: -8px; /* Змініть значення за потреби, щоб підняти помилку ближче до форми */
+    font-size: 14px; /* Зменшити розмір шрифту на 2 пікселі */
+    color: red; /* Колір тексту помилки */
+}
+
+.PassListLabel{
+    display: flex;
+    justify-content: space-between;
+}
+
+.passwdsList{
+    /* background blur */
+
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 99%;
+    height: 814px;
+    /*left: calc(50% - 1468px/2);*/
+    top: 295px;
+
+    background: linear-gradient(0deg, rgba(78, 78, 78, 0.2), rgba(78, 78, 78, 0.2)), linear-gradient(180deg, rgba(99, 99, 99, 0.075) 0%, rgba(0, 0, 0, 0.000546885) 99.99%, rgba(145, 143, 143, 0) 100%);
+    opacity: 0.8;
+    backdrop-filter: blur(14px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 60px;
+}
+
+
+
+

@@ -15,11 +15,11 @@ public final class PasswordGenerator {
     private boolean useDigits;
     private boolean usePunctuation;
 
-    private PasswordGenerator() {
-        throw new UnsupportedOperationException("Empty constructor is not supported.");
-    }
+//    private PasswordGenerator() {
+//        throw new UnsupportedOperationException("Empty constructor is not supported.");
+//    }
 
-    private PasswordGenerator(PasswordGeneratorBuilder builder) {
+    public PasswordGenerator(PasswordGeneratorBuilder builder) {
         this.useLower = builder.useLower;
         this.useUpper = builder.useUpper;
         this.useDigits = builder.useDigits;
