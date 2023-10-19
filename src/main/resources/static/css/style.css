@@ -166,7 +166,7 @@ input[type=password] {
     cursor: pointer;
 }
 
-#addPass{
+#addPass {
     width: 30%;
     background-color: #09bc8a;
     color: #172a3a;
@@ -177,7 +177,7 @@ input[type=password] {
     cursor: pointer;
 }
 
-#generate{
+#generate {
     width: 5%;
     background-color: #09bc8a;
     color: #172a3a;
@@ -188,7 +188,7 @@ input[type=password] {
     cursor: pointer;
 }
 
-#formLogin, #formReg{
+#formLogin, #formReg {
     position: absolute; /* set the form's position to absolute */
     top: 0; /* set the top position to 0 */
     bottom: 0; /* set the bottom position to 0 */
@@ -212,29 +212,78 @@ input[type=password] {
     color: red; /* Колір тексту помилки */
 }
 
-.PassListLabel{
-    display: flex;
-    justify-content: space-between;
-}
+/***************************NEW STYLE**************************************************/
+/*.PassListLabel {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*}*/
 
-.passwdsList{
-    /* background blur */
+.passwdsList {
+    width: 99.7%;
+    height: 740px;
+    opacity: 0.80;
 
-    box-sizing: border-box;
+    background: linear-gradient(180deg,
+    rgba(99.01, 99.01, 99.01, 0.08) 0%,
+    rgba(0, 0, 0, 0) 100%,
+    rgba(144.70, 142.53, 142.53, 0) 100%),
+    linear-gradient(0deg,
+            rgba(77.76, 77.76, 77.76, 0.20) 0%,
+            rgba(77.76, 77.76, 77.76, 0.20) 100%);
 
-    position: absolute;
-    width: 99%;
-    height: 814px;
-    /*left: calc(50% - 1468px/2);*/
-    top: 295px;
-
-    background: linear-gradient(0deg, rgba(78, 78, 78, 0.2), rgba(78, 78, 78, 0.2)), linear-gradient(180deg, rgba(99, 99, 99, 0.075) 0%, rgba(0, 0, 0, 0.000546885) 99.99%, rgba(145, 143, 143, 0) 100%);
-    opacity: 0.8;
-    backdrop-filter: blur(14px);
-    /* Note: backdrop-filter has minimal browser support */
     border-radius: 60px;
+    border: 2px rgba(182.95, 182.95, 182.95, 0.20) solid;
+    backdrop-filter: blur(28px)
 }
 
+#labeName {
+    width: 205px;
+    color: white;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 600;
+    word-wrap: break-word
+}
 
+#labePassword {
+    width: 308px;
+    color: white;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 600;
+    word-wrap: break-word
+}
 
+#labeTime {
+    width: 133px;
+    text-align: right;
+    color: white;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 600;
+    word-wrap: break-word
+}
 
+#name, #passwd, #timestamp {
+    width: 200px;
+    height: 60px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-radius: 51px;
+    border: 2px white solid;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    display: inline-flex
+}
+
+.itemCell {
+    flex: 1 1 0;
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word
+}

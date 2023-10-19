@@ -16,15 +16,16 @@
 
     <div class="passwdsList">
 
+        <input id="passwSearch" type="text" placeholder="Search"/>
+
         <div class="PassListLabel">
             <label id="labeName">Name:</label>
             <label id="labePassword">Password:</label>
             <label id="labeTime">Timestamp:</label>
         </div>
 
-
         <div th:each="passwds : ${passwdsList}" th:id="'passwd_' + ${passwds.id}" class="grid-item" id="div1">
-            <div>
+            <div class="itemCell">
                 <span id="name" class="resource_name" th:text="${passwds.resourceName}"></span>
 
                 <span id="passwd" class="passwd" th:text="${passwds.passwd}"></span>
