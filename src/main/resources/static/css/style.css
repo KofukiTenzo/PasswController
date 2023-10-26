@@ -1,6 +1,19 @@
-h1, label {
-    color: #172a3a;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@font-face {
+    font-family: 'Outfit', sans-serif;
+}
+
+h1 {
+    width: 417px;
+
+    color: #FFF;
     text-align: center;
+    font-family: Outfit;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 body {
@@ -236,6 +249,27 @@ input[type=password] {
     backdrop-filter: blur(28px)
 }
 
+#savedPass{
+
+}
+
+#passwSearch {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    width: 580px;
+    padding: 16px 0px 16px 24px;
+    align-items: center;
+    gap: 16px;
+
+    border-radius: 30px;
+    border: 3px solid #FFF;
+    background: #FFF;
+}
+
 #labeName {
     width: 205px;
     color: white;
@@ -255,7 +289,7 @@ input[type=password] {
 }
 
 #labeTime {
-    width: 133px;
+    width: 134px;
     text-align: right;
     color: white;
     font-size: 24px;
@@ -265,25 +299,37 @@ input[type=password] {
 }
 
 #name, #passwd, #timestamp {
-    width: 200px;
-    height: 60px;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    border-radius: 51px;
-    border: 2px white solid;
-    justify-content: flex-start;
+    flex: 1 0 0;
+
+    color: #FFF;
+    font-family: Outfit;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    padding: 16px 32px;
     align-items: center;
     gap: 16px;
-    display: inline-flex
+    align-self: stretch;
+
+    border-radius: 51px;
+    border: 2px solid #FFF;
 }
 
-.itemCell {
-    flex: 1 1 0;
-    color: white;
-    font-size: 20px;
-    font-family: Outfit;
-    font-weight: 400;
-    word-wrap: break-word
+/*.itemCell, .passListLabel{*/
+/*    display: flex;*/
+/*    width: 1080px;*/
+/*    align-items: center;*/
+/*    gap: 24px;*/
+/*    margin-bottom: 16px;*/
+/*}*/
+
+#labeName, #name {
+    display: flex;
+    flex-direction: column;
+    width: 205px;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 16px;
 }

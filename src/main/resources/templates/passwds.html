@@ -12,19 +12,19 @@
 <div id="header" th:include="page :: header"></div>
 
 <div class="listTitle">
-    <h1>Recent Passwds</h1>
+    <h1 id="savedPass">Saved Passwds</h1>
 
     <div class="passwdsList">
 
         <input id="passwSearch" type="text" placeholder="Search"/>
 
-        <div class="PassListLabel">
+        <div class="passListLabel">
             <label id="labeName">Name:</label>
             <label id="labePassword">Password:</label>
             <label id="labeTime">Timestamp:</label>
         </div>
 
-        <div th:each="passwds : ${passwdsList}" th:id="'passwd_' + ${passwds.id}" class="grid-item" id="div1">
+        <div th:each="passwds : ${passwdsList}" th:id="'passwd_' + ${passwds.id}" class="grid-item">
             <div class="itemCell">
                 <span id="name" class="resource_name" th:text="${passwds.resourceName}"></span>
 
