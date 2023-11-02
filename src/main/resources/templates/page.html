@@ -5,9 +5,9 @@
   <body>
 
     <div th:fragment="header">
-        <a th:href="@{/}">
-            <img id="logo" th:src="@{../static/img/passwc-logo.png}" border="0"/>
-        </a>
+<!--        <a th:href="@{/}">-->
+<!--            <img id="logo" th:src="@{../static/img/passwc-logo.png}" border="0"/>-->
+<!--        </a>-->
 
 
         <a sec:authorize="isAuthenticated()" id="logout" th:href="@{/logout}">Logout</a>
@@ -28,7 +28,7 @@
 
     <div>Content goes here</div>
 
-    <div th:fragment="copy">Copyright &copy; Ruslan Kharchenko</div>
+    <div id="copyright" th:fragment="copy">Copyright &copy; Ruslan Kharchenko</div>
   </body>
 
 </html>
