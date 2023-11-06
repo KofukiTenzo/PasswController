@@ -17,29 +17,29 @@
         <h1>Login</h1>
 
         <form id="formLogin" name='formLogin' th:action='@{/login}' method='POST'>
-                <tr>
-                    <td>User</td>
-                    <br/>
-                    <td>
-                        <input id="login_username_field" type='text' name='username' placeholder="Username"/> </td>
-                </tr>
+            <tr>
+                <!--                    <td>User</td>-->
+                <!--                    <br/>-->
+                <td>
+                    <input id="login_username_field" type='text' name='username' placeholder="Username"/></td>
+            </tr>
             <br/>
-                <tr>
-                    <td>Password</td>
-                    <br/>
-                    <td><input id="login_password_field" type='password' name='password' placeholder="Password"/></td>
-                </tr>
+            <tr>
+                <!--                    <td>Password</td>-->
+                <!--                    <br/>-->
+                <td><input id="login_password_field" type='password' name='password' placeholder="Password"/></td>
+            </tr>
             <br/>
-                <tr>
-                    <td colspan='2'>
-                        <input id="remember_me" name="remember-me" type="checkbox"/>
-                        <label for="remember_me" class="inline">Remember me</label></td>
-                </tr>
+            <tr>
+                <td colspan='2'>
+                    <input id="remember_me" class="custom-checkbox" name="remember-me" type="checkbox"/>
+                    <label id="remember_me_label" for="remember_me">Remember me.</label></td>
+            </tr>
             <br/>
-                <tr>
-                    <td colspan='2'>
-                        <input id="loginBtn" name="submit" type="submit" value="Login"/></td>
-                </tr>
+            <tr>
+                <td colspan='2'>
+                    <input id="loginBtn" name="submit" type="submit" value="Login"/></td>
+            </tr>
         </form>
 
     </div>

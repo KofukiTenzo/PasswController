@@ -1,8 +1,3 @@
-
-/*body {*/
-/*    background-color: #508991;*/
-/*}*/
-
 #register {
     background-color: #D6685a;
     padding: 11px 17px;
@@ -122,13 +117,6 @@
 /*    text-decoration: none;*/
 /*}*/
 
-/*#footer {*/
-/*    position: absolute;*/
-/*    top: 99vh;*/
-/*    transform: translateY(-100%);*/
-/*    width: 99%;*/
-/*}*/
-
 /*#logo {*/
 /*    width: 110px;*/
 /*    height: 85px;*/
@@ -147,29 +135,94 @@
 
 /*}*/
 
-/*input[type=text],*/
-/*input[type=password] {*/
-/*    width: 50%;*/
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #D6685a;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #0d0d0d;
+}
+
+#register_password_field{
+    margin-bottom: 16px;
+}
+
+/*input[type=checkbox]{*/
+/*    width: 14px;*/
 /*    padding: 12px 20px;*/
 /*    margin: 8px 0;*/
 /*    display: inline-block;*/
-/*    border: 1px solid #74b3ce;*/
-/*    border-radius: 4px;*/
-/*    box-sizing: border-box;*/
-/*    color: #172a3a;*/
+/*    outline: 2px solid #D6685a;*/
+/*    border-radius: 0;*/
+/*    border: none;*/
+/*    !*box-sizing: border-box;*!*/
+/*    color: #0d0d0d;*/
 /*}*/
 
-/*#registerBtn,*/
-/*#loginBtn {*/
-/*    width: 25%;*/
-/*    background-color: #D6685a;*/
-/*    color: #FFFFFF;*/
-/*    padding: 14px 20px;*/
-/*    margin: 8px 0;*/
-/*    border: none;*/
-/*    border-radius: 4px;*/
-/*    cursor: pointer;*/
-/*}*/
+.custom-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.custom-checkbox+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+
+    padding-top: 8px;
+    padding-bottom: 16px;
+}
+.custom-checkbox+label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #D6685a;
+    border-radius: 0.25em;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+}
+
+.custom-checkbox:checked+label::before {
+    border-color: #D6685a;
+    background-color: #D6685a;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+
+#remember_me_label {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word
+}
+
+#registerBtn,
+#loginBtn {
+    width: 100%;
+    background-color: #D6685a;
+
+    padding: 12px 20px;
+    /*margin: 8px 0;*/
+    border: none;
+    /*border-radius: 4px;*/
+    cursor: pointer;
+
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word
+}
 
 /*#addPass {*/
 /*    width: 30%;*/
@@ -193,16 +246,16 @@
 /*    cursor: pointer;*/
 /*}*/
 
-/*#formLogin, #formReg {*/
-/*    position: absolute; !* set the form's position to absolute *!*/
-/*    top: 0; !* set the top position to 0 *!*/
-/*    bottom: 0; !* set the bottom position to 0 *!*/
-/*    left: 550px; !* set the left position to 0 *!*/
-/*    right: 0; !* set the right position to 0 *!*/
-/*    margin: auto; !* set the margins to "auto" *!*/
-/*    width: 50%; !* set the width of the form *!*/
-/*    height: 50%; !* set the height of the form *!*/
-/*}*/
+#formLogin, #formReg {
+    position: center; /* set the form's position to absolute */
+    top: 0; /* set the top position to 0 */
+    bottom: 0; /* set the bottom position to 0 */
+    left: 0; /* set the left position to 0 */
+    right: 0; /* set the right position to 0 */
+    margin: auto; /* set the margins to "auto" */
+    width: 20%; /* set the width of the form */
+    height: 50%; /* set the height of the form */
+}
 
 /*.error {*/
 /*    color: red;*/
@@ -229,13 +282,15 @@
     font-family: 'Outfit', sans-serif;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
 h1 {
     width: 100%;
+
+    padding-bottom: 32px;
 
     color: #FFFFFF;
     text-align: center;
@@ -246,27 +301,61 @@ h1 {
     line-height: normal;
 }
 
-#header{
+#title {
+    width: unset;
+    padding-top: 200px;
+    padding-left: 130px;
+
+    text-align: left;
+    color: #FFF;
+    font-family: Outfit;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 76px; /* 120% */
+}
+
+h2 {
+    padding-top: 32px;
+    padding-left: 130px;
+    padding-bottom: unset;
+
+    color: #FFF;
+    font-family: Outfit;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 42px;
+}
+
+#header {
     background-color: #0d0d0d;
 
     color: #D6685a;
 
-    padding: 20px;
+    width: 100%;
+    height: 60px;
+
 }
 
-body{
+body {
     background-color: #0d0d0d;
 }
 
-#footer{
+#footer {
     background-color: #0d0d0d;
 
     color: #FFFFFF;
 
     position: absolute;
-        top: 99vh;
-        transform: translateY(-100%);
-        width: 99%;
+    top: 99vh;
+    transform: translateY(-100%);
+    width: 100%;
+    height: 30px;
+}
+
+#copyright {
+    padding-left: 130px;
 }
 
 
@@ -288,7 +377,7 @@ body{
     backdrop-filter: blur(28px)
 }
 
-#savedPass{
+#savedPass {
 
 }
 
@@ -356,7 +445,7 @@ body{
     border: 2px solid #FFF;
 }
 
-.itemCell, .passListLabel{
+.itemCell, .passListLabel {
     display: flex;
     width: 1080px;
     align-items: center;
