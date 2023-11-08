@@ -13,7 +13,7 @@
     color: #FFFFFF;
     font-size: 18px;
     font-family: Outfit;
-    font-weight: 400;
+    font-weight: 500;
     word-wrap: break-word
 }
 
@@ -32,7 +32,7 @@
     color: #FFFFFF;
     font-size: 18px;
     font-family: Outfit;
-    font-weight: 400;
+    font-weight: 500;
     word-wrap: break-word
 }
 
@@ -147,10 +147,6 @@ input[type=password] {
     color: #0d0d0d;
 }
 
-#register_password_field{
-    margin-bottom: 16px;
-}
-
 /*input[type=checkbox]{*/
 /*    width: 14px;*/
 /*    padding: 12px 20px;*/
@@ -169,15 +165,16 @@ input[type=password] {
     opacity: 0;
 }
 
-.custom-checkbox+label {
+.custom-checkbox + label {
     display: inline-flex;
     align-items: center;
     user-select: none;
 
     padding-top: 8px;
-    padding-bottom: 16px;
+    padding-bottom: 8px;
 }
-.custom-checkbox+label::before {
+
+.custom-checkbox + label::before {
     content: '';
     display: inline-block;
     width: 1em;
@@ -187,18 +184,28 @@ input[type=password] {
     border: 1px solid #D6685a;
     border-radius: 0.25em;
     margin-right: 0.5em;
+    margin-left: 0.5em;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 50% 50%;
 }
 
-.custom-checkbox:checked+label::before {
+#remember_me + #remember_me_label::before{
+    margin-left: 0;
+}
+
+.custom-checkbox:checked + label::before {
     border-color: #D6685a;
     background-color: #D6685a;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
 }
 
-#remember_me_label {
+#remember_me_label,
+#useLower_label,
+#useUpper_label,
+#useDigits_label,
+#usePunctuation_label,
+#length_label {
     color: #FFFFFF;
     font-size: 16px;
     font-family: Outfit;
@@ -212,7 +219,7 @@ input[type=password] {
     background-color: #D6685a;
 
     padding: 12px 20px;
-    /*margin: 8px 0;*/
+    margin: 8px 0;
     border: none;
     /*border-radius: 4px;*/
     cursor: pointer;
@@ -220,9 +227,10 @@ input[type=password] {
     color: #FFFFFF;
     font-size: 18px;
     font-family: Outfit;
-    font-weight: 400;
+    font-weight: 500;
     word-wrap: break-word
 }
+
 
 /*#addPass {*/
 /*    width: 30%;*/
@@ -255,6 +263,17 @@ input[type=password] {
     margin: auto; /* set the margins to "auto" */
     width: 20%; /* set the width of the form */
     height: 50%; /* set the height of the form */
+}
+
+#passwdsForm {
+    position: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 40%;
+    height: 50%;
 }
 
 /*.error {*/
@@ -451,4 +470,76 @@ body {
     align-items: center;
     gap: 24px;
     margin-bottom: 16px;
+}
+
+#addPass {
+    width: 376px;
+    background-color: #D6685a;
+
+    position: relative;
+    left: 391px;
+
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    /*border-radius: 4px;*/
+    cursor: pointer;
+
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: Outfit;
+    font-weight: 500;
+    word-wrap: break-word
+}
+
+#generate {
+    width: 376px;
+    background-color: #D6685a;
+
+    position: relative;
+    left: 143px;
+
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    /*border-radius: 4px;*/
+    cursor: pointer;
+
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: Outfit;
+    font-weight: 500;
+    word-wrap: break-word
+}
+
+#length_label{
+    position: relative;
+    bottom: 3px;
+
+    padding: 8px 0;
+}
+
+#length{
+    position: relative;
+    bottom: 2.5px;
+
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    width: 62px;
+    height: 19px;
+
+    border: 1px solid #D6685a;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input {
+    color: #0d0d0d;
+    font-size: 18px;
+    font-family: Outfit;
+    font-weight: 300;
+    word-wrap: break-word
 }

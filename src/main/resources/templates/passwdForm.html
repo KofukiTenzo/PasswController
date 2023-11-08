@@ -18,62 +18,76 @@
         <h1>Add Passwd</h1>
         <form id="passwdsForm" method="post" th:object="${passwdForm}" th:action="@{/passwds/addPasswd}">
             <div>
-                <label>App name:</label><br/>
-                <input id="resourceName_field" type="text" th:field="*{resourceName}"/>
+                <!--                <label>App name:</label><br/>-->
+                <input id="resourceName_field" type="text" th:field="*{resourceName}" placeholder="App name"/>
                 <span class="error" th:if="${#fields.hasErrors('resourceName')}" th:errors="*{resourceName}"></span>
             </div>
 
             <div>
-                <label>Password:</label><br/>
-                <input id="passwd_field" type="text" th:field="*{passwd}"/>
+                <!--                <label>Password:</label><br/>-->
+                <input id="passwd_field" type="text" th:field="*{passwd}" placeholder="Password"/>
                 <span class="error" th:if="${#fields.hasErrors('passwd')}" th:errors="*{passwd}"></span>
             </div>
 
             <input id="addPass" type="submit" value="Add password"/>
-
         </form>
 
+        <div id="checkbox_line">
+            <tr>
+                <td colspan='2'>
+                    <input class="custom-checkbox" id="useLower" name="useLower" type="checkbox">
+                    <label id="useLower_label" for="useLower">a-z</label></td>
+            </tr>
 
-        <label>
-            <input id="useLower" type="checkbox" th:field="${passwdForm.useLower}"> a-z
-        </label>
-        <label>
-            <input id="useUpper" type="checkbox" th:field="${passwdForm.useUpper}"> A-Z
-        </label>
-        <label>
-            <input id="useDigits" type="checkbox" th:field="${passwdForm.useDigits}"> 0-9
-        </label>
-        <label>
-            <input id="usePunctuation" type="checkbox" th:field="${passwdForm.usePunctuation}"> @%
-        </label>
-        <label>
-            <input id="length" type="number" th:field="${passwdForm.length}"> Length
-        </label>
+            <tr>
+                <td colspan='2'>
+                    <input class="custom-checkbox" id="useUpper" type="checkbox">
+                    <label id="useUpper_label" for="useUpper">A-Z</label></td>
+            </tr>
+
+            <tr>
+                <td colspan='2'>
+                    <input class="custom-checkbox" id="useDigits" type="checkbox">
+                    <label id="useDigits_label" for="useDigits">0-9</label></td>
+            </tr>
+
+            <tr>
+                <td colspan='2'>
+                    <input class="custom-checkbox" id="usePunctuation" type="checkbox">
+                    <label id="usePunctuation_label" for="usePunctuation">@%</label></td>
+            </tr>
+
+            <tr>
+                <input id="length" name="length" type="number">
+                <label id="length_label" for="length">Length</label></td>
+            </tr>
+        </div>
 
         <button id="generate">Generate</button>
 
-        <script th:inline="javascript">
-            document.getElementById('generate').addEventListener('click', function() {
-                var useLower = document.getElementById('useLower').checked;
-                var useUpper = document.getElementById('useUpper').checked;
-                var useDigits = document.getElementById('useDigits').checked;
-                var usePunctuation = document.getElementById('usePunctuation').checked;
-                var length = document.getElementById('length').value;
-
-                fetch('/passwds/generatePassword?useLower=' + useLower + '&useUpper=' + useUpper + '&useDigits=' + useDigits + '&usePunctuation=' + usePunctuation + '&length=' + length)
-                    .then(response => response.text())
-                    .then(generatedPassword => {
-                        document.getElementById('passwd_field').value = generatedPassword;
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-            });
-        </script>
-
 
     </div>
+</div>
 
-    <div id="footer" th:include="page :: copy"></div>
+<script th:inline="javascript">
+    document.getElementById('generate').addEventListener('click', function () {
+        var useLower = document.getElementById('useLower').checked;
+        var useUpper = document.getElementById('useUpper').checked;
+        var useDigits = document.getElementById('useDigits').checked;
+        var usePunctuation = document.getElementById('usePunctuation').checked;
+        var length = document.getElementById('length').value;
+
+        fetch('/passwds/generatePassword?useLower=' + useLower + '&useUpper=' + useUpper + '&useDigits=' + useDigits + '&usePunctuation=' + usePunctuation + '&length=' + length)
+            .then(response => response.text())
+            .then(generatedPassword => {
+                document.getElementById('passwd_field').value = generatedPassword;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+</script>
+
+<div id="footer" th:include="page :: copy"></div>
 </body>
 </html>
