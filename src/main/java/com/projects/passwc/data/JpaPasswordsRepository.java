@@ -22,7 +22,7 @@ public class JpaPasswordsRepository implements PasswdsRepository {
 
     @Override
     public List<Passwds> findRecent(String username) {
-        return findRecent(username, 10);
+        return findRecent(username, 8);
     }
 
     @Override

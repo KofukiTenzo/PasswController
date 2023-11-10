@@ -30,7 +30,7 @@ public class PasswdsController {
     public List<Passwds> passwds(
             @RequestParam(value = "max", defaultValue = Long.MAX_VALUE + "")
             long max,
-            @RequestParam(value = "count", defaultValue = "15")
+            @RequestParam(value = "count", defaultValue = "8")
             int count,
             Principal principal) {
         return passwdsRepository.findRecent(principal.getName());
