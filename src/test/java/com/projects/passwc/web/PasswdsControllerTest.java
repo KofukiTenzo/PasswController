@@ -121,7 +121,7 @@ public class PasswdsControllerTest {
         String generatedPassword = "Abc123@";
         PasswdForm passwdForm = new PasswdForm();
 
-        when(passwdsRepository.findRecent(any())).thenReturn(Collections.emptyList());
+        when(passwdsRepository.findAllUserPasswds(any())).thenReturn(Collections.emptyList());
 
         mockMvc.perform(get("/passwds/generatePassword")
                         .param("useLower", "true")

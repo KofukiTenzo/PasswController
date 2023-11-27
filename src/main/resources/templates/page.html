@@ -13,7 +13,7 @@
         <a sec:authorize="isAuthenticated()" id="logout" th:href="@{/logout}">Logout</a>
         <a sec:authorize="isAuthenticated()" id="profileBtn" th:href="@{/user/profile}">Profile</a>
 
-        <a sec:authorize="isAuthenticated()" id="passwdsList" th:href="@{/passwds}">Passwds</a>
+        <a sec:authorize="isAuthenticated()" id="passwdsList" th:href="@{/passwds?pageNo=0}">Passwds</a>
         <a sec:authorize="isAuthenticated()" id="addPasswd" th:href="@{/passwds/addPasswd}">Add password</a>
         <a sec:authorize="isAuthenticated()" id="generatePass" th:href="@{/passwds/generate}">Generate</a>
 

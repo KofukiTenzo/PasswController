@@ -1,7 +1,7 @@
 package com.projects.passwc.forms;
 
 import com.projects.passwc.DAO.Passwds;
-import com.projects.passwc.PasswordGenerator;
+import com.projects.passwc.service.PasswordGenerator;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;

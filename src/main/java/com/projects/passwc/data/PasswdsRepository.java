@@ -6,17 +6,15 @@ import java.util.List;
 
 public interface PasswdsRepository {
 
-    long count();
-
-    List<Passwds> findRecent(String username);
-
-    List<Passwds> findRecent(String username, int count);
+    List<Passwds> findAllUserPasswds(String username);
 
     Passwds findOne(long id);
 
+    List<Passwds> findByName(String username, String name);
+
     Passwds save(Passwds passwds);
 
-    List<Passwds> findByPasswdId(long passwdId);
-
     void delete(long id);
+
+    PasswdsResponse findRecent(String name, int pageNo, int count);
 }

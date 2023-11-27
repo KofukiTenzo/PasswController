@@ -1,4 +1,4 @@
-package com.projects.passwc;
+package com.projects.passwc.service;
 
 import java.util.ArrayList;
 import java.util.List;

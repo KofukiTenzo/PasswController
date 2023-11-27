@@ -24,7 +24,7 @@
             <label id="labeTime">Timestamp:</label>
         </div>
 
-        <div th:each="passwds : ${passwdsList}" th:id="'passwd_' + ${passwds.id}" class="grid-item">
+        <div th:each="passwds : ${passwdsResponse.passwdsList}" th:id="'passwd_' + ${passwds.id}" class="grid-item">
             <div class="itemCell">
                 <span id="name" class="resource_name" th:text="${passwds.resourceName}"></span>
 
@@ -33,8 +33,50 @@
                 <span id="timestamp" class="time" th:text="${passwds.creation_date}"></span>
             </div>
         </div>
-    </div>
 
+        <!-- Pagination -->
+<!--        <div th:if="${totalPages > 1}">-->
+<!--            <ul>-->
+<!--                <li th:each="pageNumber : ${#numbers.sequence(0, totalPages - 1)}">-->
+<!--                    <a th:href="@{/passwds?pageNo=${pageNumber}}" th:text="${pageNumber + 1}"></a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+
+<!--        <div th:if="${passwdsResponse.totalPages > 1}">-->
+<!--            <ul>-->
+<!--                <li th:each="pageNumber : ${#numbers.sequence(0, passwdsResponse.totalPages - 1)}"-->
+<!--                    th:class="${pageNumber == passwdsResponse.pageNumber ? 'active' : ''}">-->
+<!--                    <a th:href="@{/passwds?pageNumber=${pageNumber}}"-->
+<!--                       th:text="${pageNumber + 1}"></a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+
+        <div th:if="${passwdsResponse.totalPages > 1}">
+            <ul>
+                <li th:each="pageNumber : ${#numbers.sequence(0, passwdsResponse.totalPages - 1)}"
+                    th:class="${pageNumber == passwdsResponse.pageNumber ? 'active' : ''}">
+                    <a th:if="${pageNumber == passwdsResponse.pageNumber}"
+                       th:text="${pageNumber + 1}"></a>
+                    <span th:if="${pageNumber != passwdsResponse.pageNumber}">
+                <a th:href="@{/passwds(pageNumber= ${pageNumber})}"
+                   th:text="${pageNumber + 1}"></a>
+            </span>
+                </li>
+                <li th:if="${passwdsResponse.totalPages > 4 and passwdsResponse.pageNumber + 1 < passwdsResponse.totalPages}">
+                    <span>...</span>
+                </li>
+                <li th:if="${passwdsResponse.totalPages > 1}">
+                    <a th:href="@{/passwds(pageNumber= ${passwdsResponse.totalPages - 1})}"
+                       th:text="${passwdsResponse.totalPages}"></a>
+                </li>
+            </ul>
+        </div>
+
+
+
+    </div>
 
 </div>
 

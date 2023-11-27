@@ -2,6 +2,7 @@ package com.projects.passwc.web;
 
 import com.projects.passwc.DAO.Passwds;
 import com.projects.passwc.data.PasswdsRepository;
+import com.projects.passwc.data.PasswdsResponse;
 import com.projects.passwc.forms.PasswdForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.List;
 
 
 @Controller
@@ -27,20 +27,21 @@ public class PasswdsController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Passwds> passwds(
-            @RequestParam(value = "max", defaultValue = Long.MAX_VALUE + "")
-            long max,
-            @RequestParam(value = "count", defaultValue = "8")
-            int count,
+    public PasswdsResponse passwds(
+            @RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = "7", required = false) int count,
             Principal principal) {
-        return passwdsRepository.findRecent(principal.getName());
+        return passwdsRepository.findRecent(principal.getName(), pageNo, count);
     }
 
-    @RequestMapping(value = "/{passwdId}", method = RequestMethod.GET)
-    public String passwd(@PathVariable("passwdId") long passwdId, Model model) {
-        model.addAttribute(passwdsRepository.findOne(passwdId));
+    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
+    public String search(
+            @PathVariable("name") String name,
+            Model model,
+            Principal principal) {
+        model.addAttribute(passwdsRepository.findByName(principal.getName(), name));
         return "passwd";
-    }
+    } //rewrite to search
 
     @GetMapping("/addPasswd")
     public String showPasswordForm(Model model) {
