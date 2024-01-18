@@ -18,9 +18,13 @@ public class PasswdForm {
     private boolean isGanerated = false;
 
     private boolean useLower;
+
     private boolean useUpper;
+
     private boolean useDigits;
+
     private boolean usePunctuation;
+
     private int length;
 
     public String getResourceName() {

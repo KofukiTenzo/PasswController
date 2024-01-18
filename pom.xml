@@ -98,12 +98,6 @@
             <artifactId>hibernate-validator</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.hibernate</groupId>-->
-<!--            <artifactId>hibernate-validator-cdi</artifactId>-->
-<!--        </dependency>-->
-
-
         <!-- Thymeleaf -->
         <dependency>
             <groupId>org.thymeleaf</groupId>

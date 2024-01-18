@@ -17,19 +17,16 @@
 
         <form id="formReg" th:action="@{/register}" th:object="${userRegisterForm}" method="post">
             <div>
-<!--                <label>Username:</label><br/>-->
                 <input id="register_username_field" type="text" th:field="*{username}" placeholder="Username"/>
                 <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
             </div>
 
             <div>
-<!--                <label>Email:</label><br/>-->
                 <input id="register_email_field" type="text" th:field="*{email}" placeholder="Email"/>
                 <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
             </div>
 
             <div>
-<!--                <label>Password:</label><br/>-->
                 <input id="register_password_field" type="password" th:field="*{password}" placeholder="Password"/>
                 <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
             </div>
@@ -39,7 +36,7 @@
 
     </div>
 
-    <div id="footer" th:include="page :: copy"></div>
+    <div class="footer" th:include="page :: copy"></div>
 </div>
 </body>
 </html>

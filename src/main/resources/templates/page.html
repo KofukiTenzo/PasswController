@@ -2,33 +2,35 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 
-  <body>
+<body>
 
-    <div th:fragment="header">
-<!--        <a th:href="@{/}">-->
-<!--            <img id="logo" th:src="@{../static/img/passwc-logo.png}" border="0"/>-->
-<!--        </a>-->
+<div th:fragment="header">
+<!--            <a th:href="@{/}">-->
+<!--                <img id="logo" th:src="@{../static/img/passwc-logo.png}" border="0"/>-->
+<!--            </a>-->
 
+    <div sec:authorize="isAuthenticated()" class="dropdown">
+        <input type="checkbox" id="dropdown">
+        <label for="dropdown">
+            <img class="dropbtn" th:src="@{../static/img/account.png}" border="0"/>
+        </label>
 
-        <a sec:authorize="isAuthenticated()" id="logout" th:href="@{/logout}">Logout</a>
-        <a sec:authorize="isAuthenticated()" id="profileBtn" th:href="@{/user/profile}">Profile</a>
-
-        <a sec:authorize="isAuthenticated()" id="passwdsList" th:href="@{/passwds?pageNo=0}">Passwds</a>
-        <a sec:authorize="isAuthenticated()" id="addPasswd" th:href="@{/passwds/addPasswd}">Add password</a>
-        <a sec:authorize="isAuthenticated()" id="generatePass" th:href="@{/passwds/generate}">Generate</a>
-
-        <a sec:authorize="!isAuthenticated()" id="register" th:href="@{/register}">Register</a>
-            <a th:if="${!#httpServletRequest.getRequestURI().contains('/login')}"
-                    sec:authorize="!isAuthenticated()" id="login" th:href="@{/login}">Login</a>
-
-
-
-
+            <div class="dropdown-content">
+                <a class="dm-content" id="profileBtn" th:href="@{/user/profile}">Profile</a>
+                <a class="dm-content" id="generatePass" th:href="@{/passwds/generate}">Generate</a>
+                <a class="dm-content" id="passwdsList" th:href="@{/passwds}">Passwds</a>
+                <a class="dm-content" id="addPasswd" th:href="@{/passwds/addPasswd}">Add password</a>
+                <a class="dm-content" id="logout" th:href="@{/logout}">Logout</a>
+            </div>
     </div>
 
-    <div>Content goes here</div>
 
-    <div id="copyright" th:fragment="copy">Copyright &copy; Ruslan Kharchenko</div>
-  </body>
+    <a sec:authorize="!isAuthenticated()" id="register" th:href="@{/register}">Register</a>
+    <a th:if="${!#httpServletRequest.getRequestURI().contains('/login')}"
+       sec:authorize="!isAuthenticated()" id="login" th:href="@{/login}">Login</a>
+</div>
+
+<div class="footer" th:fragment="copy">Copyright &copy; Ruslan Kharchenko</div>
+</body>
 
 </html>

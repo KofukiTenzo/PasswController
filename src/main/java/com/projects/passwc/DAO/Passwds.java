@@ -26,24 +26,12 @@ public class Passwds {
 
     public Passwds() {}
 
-//    public Passwds(String resourceName, String passwd) {
-//        this(null, null, resourceName, passwd, new Date());
-//    }
-
     public Passwds(String user, String resourceName, String passwd){
         this.user = user;
         this.resourceName = resourceName;
         this.passwd = passwd;
         this.creation_date = new Date();
     }
-
-//    public Passwds(Long id, String user, String resourceName, String passwd, Date creation_date) {
-//        this.id = id;
-//        this.user = user;
-//        this.resourceName = resourceName;
-//        this.passwd = passwd;
-//        this.creation_date = creation_date;
-//    }
 
     public Long getId() {
         return id;
@@ -65,3 +53,5 @@ public class Passwds {
         return user;
     }
 }
+
+

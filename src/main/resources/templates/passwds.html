@@ -34,52 +34,49 @@
             </div>
         </div>
 
-        <!-- Pagination -->
-<!--        <div th:if="${totalPages > 1}">-->
-<!--            <ul>-->
-<!--                <li th:each="pageNumber : ${#numbers.sequence(0, totalPages - 1)}">-->
-<!--                    <a th:href="@{/passwds?pageNo=${pageNumber}}" th:text="${pageNumber + 1}"></a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
+<!--         Pagination -->
+        <div class="pagination_container">
+            <nav aria-label="Pagination" th:if="${passwdsResponse.totalPages > 0}">
+                <ul class="page">
 
-<!--        <div th:if="${passwdsResponse.totalPages > 1}">-->
-<!--            <ul>-->
-<!--                <li th:each="pageNumber : ${#numbers.sequence(0, passwdsResponse.totalPages - 1)}"-->
-<!--                    th:class="${pageNumber == passwdsResponse.pageNumber ? 'active' : ''}">-->
-<!--                    <a th:href="@{/passwds?pageNumber=${pageNumber}}"-->
-<!--                       th:text="${pageNumber + 1}"></a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
+                    <li class="page-item" th:classappend="${passwdsResponse.pageNumber + 1 == 1} ? 'disabled'">
+                        <a th:classappend="${passwdsResponse.pageNumber + 1 == 1} ? 'disabled'" th:replace="paging :: paging(1, '<<', 'First Page')"></a>
+                    </li>
 
-        <div th:if="${passwdsResponse.totalPages > 1}">
-            <ul>
-                <li th:each="pageNumber : ${#numbers.sequence(0, passwdsResponse.totalPages - 1)}"
-                    th:class="${pageNumber == passwdsResponse.pageNumber ? 'active' : ''}">
-                    <a th:if="${pageNumber == passwdsResponse.pageNumber}"
-                       th:text="${pageNumber + 1}"></a>
-                    <span th:if="${pageNumber != passwdsResponse.pageNumber}">
-                <a th:href="@{/passwds(pageNumber= ${pageNumber})}"
-                   th:text="${pageNumber + 1}"></a>
-            </span>
-                </li>
-                <li th:if="${passwdsResponse.totalPages > 4 and passwdsResponse.pageNumber + 1 < passwdsResponse.totalPages}">
-                    <span>...</span>
-                </li>
-                <li th:if="${passwdsResponse.totalPages > 1}">
-                    <a th:href="@{/passwds(pageNumber= ${passwdsResponse.totalPages - 1})}"
-                       th:text="${passwdsResponse.totalPages}"></a>
-                </li>
-            </ul>
+                    <li class="page-item" th:classappend="${passwdsResponse.pageNumber + 1 == 1} ? 'disabled'">
+                        <a th:replace="paging :: paging(${passwdsResponse.pageNumber}, '<', 'Previous Page')"></a>
+                    </li>
+
+                    <li class="page-item" th:if="${passwdsResponse.pageNumber - 2 > 1}">
+                        <a class="page-link" href="">...</a>
+                    </li>
+
+                    <li class="page-item"
+                        th:each="page : ${#numbers.sequence(passwdsResponse.pageNumber > 2 ? passwdsResponse.pageNumber - 2 : 1, passwdsResponse.pageNumber + 2 < passwdsResponse.totalPages ? passwdsResponse.pageNumber + 2 : passwdsResponse.totalPages)}"
+                        th:classappend="${passwdsResponse.pageNumber + 1 == page} ? 'current'">
+                        <a th:replace="paging :: paging(${page}, ${page}, 'page ' + ${page})"></a>
+                    </li>
+
+                    <li class="page-item" th:if="${passwdsResponse.pageNumber + 2 < passwdsResponse.totalPages}">
+                        <a class="page-link" href="">...</a>
+                    </li>
+
+                    <li class="page-item" th:classappend="${passwdsResponse.pageNumber + 1 == passwdsResponse.totalPages} ? 'disabled'">
+                        <a th:replace="paging :: paging(${passwdsResponse.pageNumber + 2},'>', 'Next Page')"></a>
+                    </li>
+
+                    <li class="page-item" th:classappend="${passwdsResponse.pageNumber + 1 == passwdsResponse.totalPages} ? 'disabled'">
+                        <a th:replace="paging :: paging(${passwdsResponse.totalPages}, '>>', 'Last Page')"></a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-
-
+    </div>
 
     </div>
 
 </div>
 
-<div id="footer" th:include="page :: copy"></div>
+<div class="footer" th:include="page :: copy"></div>
 </body>
 </html>

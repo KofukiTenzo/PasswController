@@ -18,15 +18,11 @@
 
         <form id="formLogin" name='formLogin' th:action='@{/login}' method='POST'>
             <tr>
-                <!--                    <td>User</td>-->
-                <!--                    <br/>-->
                 <td>
                     <input id="login_username_field" type='text' name='username' placeholder="Username"/></td>
             </tr>
             <br/>
             <tr>
-                <!--                    <td>Password</td>-->
-                <!--                    <br/>-->
                 <td><input id="login_password_field" type='password' name='password' placeholder="Password"/></td>
             </tr>
             <br/>
@@ -44,6 +40,7 @@
 
     </div>
 
-    <div id="footer" th:include="page :: copy"></div>
+    <div class="footer" th:include="page :: copy"></div>
+
 </body>
 </html>

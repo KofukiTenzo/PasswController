@@ -1,0 +1,5 @@
+<a th:fragment="paging(pageNumber, label, tooltip)" class="page-link"
+   th:href="@{'/passwds?' + 'page=' + ${pageNumber - 1}}"
+   th:title="${tooltip}" rel="tooltip">
+  [[${label}]]
+</a>

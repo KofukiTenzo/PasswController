@@ -16,5 +16,5 @@ public interface PasswdsRepository {
 
     void delete(long id);
 
-    PasswdsResponse findRecent(String name, int pageNo, int count);
+    PasswdsResponse findRecent(String name, int pageNo);
 }

@@ -28,10 +28,9 @@ public class PasswdsController {
 
     @RequestMapping(method = RequestMethod.GET)
     public PasswdsResponse passwds(
-            @RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNo,
-            @RequestParam(value = "pageSize", defaultValue = "7", required = false) int count,
+            @RequestParam(value = "page", defaultValue = "0") int pageNumber,
             Principal principal) {
-        return passwdsRepository.findRecent(principal.getName(), pageNo, count);
+        return passwdsRepository.findRecent(principal.getName(), pageNumber);
     }
 
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)

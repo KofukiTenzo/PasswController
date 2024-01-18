@@ -11,15 +11,21 @@
 <body>
 <div id="header" th:include="page :: header"></div>
 
-<div id="content">
-    <h1>Your Profile</h1>
-    <label>Username</label>:
-    <span th:text="${user.username}">username</span><br/>
+<h1>My Profile</h1>
 
-    <label>Email</label>:
-    <span th:text="${user.email}">email</span>
+<div id="content">
+    <div class="p_username">
+        <label>Username</label>:
+        <span id="profile_username" th:text="${user.username}">username</span><br/>
+    </div>
+
+    <div class="p_passw">
+        <label>Email</label>:
+        <span id="profile_password" th:text="${user.email}">email</span>
+    </div>
+
 </div>
 
-<div id="footer" th:include="page :: copy"></div>
+<div class="footer" th:include="page :: copy"></div>
 </body>
 </html>

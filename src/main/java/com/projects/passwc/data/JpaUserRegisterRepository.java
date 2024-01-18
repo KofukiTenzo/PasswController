@@ -41,3 +41,7 @@ public class JpaUserRegisterRepository implements UserRegisterRepository{
         return (List<User>) entityManager.createQuery("select u from User u").getResultList();
     }
 }
+
+
+
+

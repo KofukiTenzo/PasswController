@@ -25,9 +25,9 @@ public class JpaPasswordsRepository implements PasswdsRepository {
     }
 
     @Override
-    public PasswdsResponse findRecent(String username, int pageNumber, int pageSize) {
+    public PasswdsResponse findRecent(String username, int pageNumber) {
         PagedListHolder<Passwds> pagedListHolder = new PagedListHolder(findAllUserPasswds(username));
-        pagedListHolder.setPageSize(pageSize);
+        pagedListHolder.setPageSize(7);
         pagedListHolder.setPage(pageNumber);
 
         PasswdsResponse passwdsResponse = new PasswdsResponse();

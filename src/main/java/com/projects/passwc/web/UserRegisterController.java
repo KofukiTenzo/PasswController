@@ -22,14 +22,12 @@ public class UserRegisterController {
         this.userRegisterRepository = userRegisterRepository;
     }
 
-//    @RequestMapping(value = "/register", method = RequestMethod.GET)
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("userRegisterForm", new UserRegisterForm());
         return "registerForm";
     }
 
-//    @RequestMapping(value = "/register", method = RequestMethod.POST)
     @PostMapping("/register")
     public String processRegistration(@Valid UserRegisterForm userRegisterForm,
                                       Errors errors) throws IllegalStateException, IOException {
