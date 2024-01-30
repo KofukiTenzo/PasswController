@@ -1,4 +1,4 @@
-package com.projects.passwc.data;
+package com.projects.passwc.response;
 
 import com.projects.passwc.DAO.Passwds;
 import lombok.Data;

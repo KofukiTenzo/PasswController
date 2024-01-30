@@ -1,9 +1,8 @@
 package com.projects.passwc.web;
 
 import com.projects.passwc.DAO.User;
-import com.projects.passwc.data.UserRegisterRepository;
-import com.projects.passwc.forms.UserRegisterForm;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.projects.passwc.DTO.UserRegisterDTO;
+import com.projects.passwc.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -15,27 +14,25 @@ import java.io.IOException;
 
 @Controller
 public class UserRegisterController {
-    private UserRegisterRepository userRegisterRepository;
+    private final UserService userService;
 
-    @Autowired
-    public UserRegisterController(UserRegisterRepository userRegisterRepository) {
-        this.userRegisterRepository = userRegisterRepository;
+    public UserRegisterController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
-        model.addAttribute("userRegisterForm", new UserRegisterForm());
-        return "registerForm";
+        model.addAttribute("userRegisterForm", new UserRegisterDTO());
+        return "register_form";
     }
 
     @PostMapping("/register")
-    public String processRegistration(@Valid UserRegisterForm userRegisterForm,
+    public String processRegistration(@Valid UserRegisterDTO userRegisterDTO,
                                       Errors errors) throws IllegalStateException, IOException {
-        if (errors.hasErrors())
-            return "registerForm";
+        if (errors.hasErrors()) return "register_form";
 
-        User user = userRegisterForm.toUser();
-        userRegisterRepository.save(user);
+        User registredUser = userService.register(userRegisterDTO);
+
         return "redirect:/user/profile";
     }
 }

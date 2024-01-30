@@ -1,11 +1,10 @@
-package com.projects.passwc.forms;
+package com.projects.passwc.DTO;
 
-import com.projects.passwc.DAO.User;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
-import javax.validation.constraints.*;
-
-public class UserRegisterForm {
+public class UserRegisterDTO {
 
     @Size(min = 4, max = 20/*, message = "Username must be between {min} and {max} characters long."*/)
     private String username;
@@ -39,10 +38,5 @@ public class UserRegisterForm {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public User toUser() {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return new User(username, email, passwordEncoder.encode(password));
     }
 }

@@ -11,18 +11,15 @@ public class Passwds {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-//    @OneToMany
     @JoinColumn(name = "user")
     private String user;
 
-    @Column(name = "resourceName")
+    @Column(name = "resource_name")
     private String resourceName;
     @Column(name = "passwd")
     private String passwd;
     @Column(name = "creation_date")
     private Date creation_date;
-
-
 
     public Passwds() {}
 

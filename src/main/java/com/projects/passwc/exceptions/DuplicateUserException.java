@@ -1,4 +1,4 @@
-package com.projects.passwc.web;
+package com.projects.passwc.exceptions;
 
 public class DuplicateUserException extends RuntimeException{
 }

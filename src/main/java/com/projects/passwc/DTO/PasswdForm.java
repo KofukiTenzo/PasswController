@@ -1,4 +1,4 @@
-package com.projects.passwc.forms;
+package com.projects.passwc.DTO;
 
 import com.projects.passwc.DAO.Passwds;
 import com.projects.passwc.service.PasswordGenerator;

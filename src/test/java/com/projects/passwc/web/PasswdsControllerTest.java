@@ -2,7 +2,7 @@ package com.projects.passwc.web;
 
 import com.projects.passwc.DAO.Passwds;
 import com.projects.passwc.data.PasswdsRepository;
-import com.projects.passwc.forms.PasswdForm;
+import com.projects.passwc.DTO.PasswdForm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

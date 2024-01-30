@@ -16,7 +16,7 @@
 
     <div class="passwdsListForm">
 
-        <input id="passwSearch" type="text" placeholder="Search"/>
+        <input id="passwSearch" onsubmit="return event.key === 'Enter'" type="text" placeholder="Search"/>
 
         <div class="passListLabel">
             <label id="labeName">Name:</label>
@@ -36,7 +36,7 @@
 
 <!--         Pagination -->
         <div class="pagination_container">
-            <nav aria-label="Pagination" th:if="${passwdsResponse.totalPages > 0}">
+            <nav aria-label="Pagination" th:if="${passwdsResponse.totalPages > 1}">
                 <ul class="page">
 
                     <li class="page-item" th:classappend="${passwdsResponse.pageNumber + 1 == 1} ? 'disabled'">

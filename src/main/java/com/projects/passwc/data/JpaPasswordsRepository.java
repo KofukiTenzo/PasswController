@@ -1,6 +1,7 @@
 package com.projects.passwc.data;
 
 import com.projects.passwc.DAO.Passwds;
+import com.projects.passwc.response.PasswdsResponse;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,8 +26,8 @@ public class JpaPasswordsRepository implements PasswdsRepository {
     }
 
     @Override
-    public PasswdsResponse findRecent(String username, int pageNumber) {
-        PagedListHolder<Passwds> pagedListHolder = new PagedListHolder(findAllUserPasswds(username));
+    public PasswdsResponse showPasswds(int pageNumber, List<Passwds> list) {
+        PagedListHolder<Passwds> pagedListHolder = new PagedListHolder(list);
         pagedListHolder.setPageSize(7);
         pagedListHolder.setPage(pageNumber);
 
@@ -41,6 +42,13 @@ public class JpaPasswordsRepository implements PasswdsRepository {
         return passwdsResponse;
     }
 
+//    @Override
+//    public List<Passwds> searchPasswds(String username, String query) {
+//        return (List<Passwds>) entityManager
+//                .createQuery("select p from Passwds p WHERE p.resourceName like concat('%', :query, '%') " +
+//                        "or p.passwd like concat('%', :query, '%') ");
+//    }
+
     @Override
     public Passwds findOne(long id) {
         return entityManager
@@ -50,9 +58,7 @@ public class JpaPasswordsRepository implements PasswdsRepository {
     @Override
     public List<Passwds> findByName(String username, String name) {
         return (List<Passwds>) entityManager
-                .createQuery("select p from Passwds p where p.user=?1 and p.resourceName=?2 order by p.creation_date desc")
-                .setParameter(1, username)
-                .setParameter(2, name)
+                .createQuery("select p from Passwds p where p.user=:username and p.resourceName=:name order by p.creation_date desc")
                 .getResultList();
     }
 
@@ -68,11 +74,6 @@ public class JpaPasswordsRepository implements PasswdsRepository {
         entityManager
                 .remove(findOne(id));
     }
-
-//    @Override
-//    public long count() {
-//        return findAll().size();
-//    }
 
     public List<Passwds> findAll() {
         return (List<Passwds>) entityManager

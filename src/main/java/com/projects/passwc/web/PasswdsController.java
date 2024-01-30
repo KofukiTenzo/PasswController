@@ -2,8 +2,8 @@ package com.projects.passwc.web;
 
 import com.projects.passwc.DAO.Passwds;
 import com.projects.passwc.data.PasswdsRepository;
-import com.projects.passwc.data.PasswdsResponse;
-import com.projects.passwc.forms.PasswdForm;
+import com.projects.passwc.response.PasswdsResponse;
+import com.projects.passwc.DTO.PasswdForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,21 +26,21 @@ public class PasswdsController {
         this.passwdsRepository = passwdsRepository;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public PasswdsResponse passwds(
             @RequestParam(value = "page", defaultValue = "0") int pageNumber,
             Principal principal) {
-        return passwdsRepository.findRecent(principal.getName(), pageNumber);
+
+        return passwdsRepository.showPasswds(pageNumber, passwdsRepository.findAllUserPasswds(principal.getName()));
     }
 
-    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    public String search(
-            @PathVariable("name") String name,
-            Model model,
-            Principal principal) {
-        model.addAttribute(passwdsRepository.findByName(principal.getName(), name));
-        return "passwd";
-    } //rewrite to search
+//    @GetMapping
+//    public PasswdsResponse search(
+//            @RequestParam(value = "page", defaultValue = "0") int pageNumber,
+//            @RequestParam("query") String query,
+//            Principal principal) {
+//        return passwdsRepository.showPasswds(pageNumber, passwdsRepository.searchPasswds(principal.getName(), query));
+//    }
 
     @GetMapping("/addPasswd")
     public String showPasswordForm(Model model) {
