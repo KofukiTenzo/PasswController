@@ -29,7 +29,6 @@ public class UserService {
     }
 
     public User getAuthentication(String username){
-
         return userRepository.findByUsername(username);
     }
 }
