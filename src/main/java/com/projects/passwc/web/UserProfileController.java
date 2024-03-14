@@ -1,7 +1,7 @@
 package com.projects.passwc.web;
 
-import com.projects.passwc.DAO.User;
-import com.projects.passwc.data.UserRepository;
+import com.projects.passwc.Entitys.User;
+import com.projects.passwc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,17 +14,17 @@ import java.security.Principal;
 @RequestMapping("/user")
 public class UserProfileController {
 
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    public UserProfileController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserProfileController(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String showUserProfileForAuthenticatedUser(Principal principal, Model model) {
         String username = principal.getName();
-        User user = userRepository.findByUsername(username);
+        User user = userService.getAuthentication(username);
         model.addAttribute("user", user);
         return "profile";
     }
