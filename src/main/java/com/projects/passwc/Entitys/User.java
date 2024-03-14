@@ -1,28 +1,33 @@
-package com.projects.passwc.DAO;
+package com.projects.passwc.Entitys;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "USER")
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username")
+    @Column(name = "USERNAME")
     private String username;
 
-    @Column(name = "email")
+    @Column(name = "EMAIL")
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "PASSWORD")
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Passwds> passwdsList = new HashSet<>();
 
     public User() {
     }
@@ -73,4 +78,10 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
     }
+
+    public Set<Passwds> getPasswdsList() {
+        return passwdsList;
+    }
+
+
 }

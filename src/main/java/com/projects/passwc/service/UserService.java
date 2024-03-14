@@ -1,6 +1,6 @@
 package com.projects.passwc.service;
 
-import com.projects.passwc.DAO.User;
+import com.projects.passwc.Entitys.User;
 import com.projects.passwc.DTO.UserRegisterDTO;
 import com.projects.passwc.data.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,5 +26,10 @@ public class UserService {
         );
 
         return userRepository.save(user);
+    }
+
+    public User getAuthentication(String username){
+
+        return userRepository.findByUsername(username);
     }
 }

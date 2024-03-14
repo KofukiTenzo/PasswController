@@ -1,6 +1,6 @@
 package com.projects.passwc.web;
 
-import com.projects.passwc.DAO.User;
+import com.projects.passwc.Entitys.User;
 import com.projects.passwc.DTO.UserRegisterDTO;
 import com.projects.passwc.service.UserService;
 import org.springframework.stereotype.Controller;
