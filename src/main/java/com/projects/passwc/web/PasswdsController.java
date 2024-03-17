@@ -1,10 +1,9 @@
 package com.projects.passwc.web;
 
-import com.projects.passwc.DAO.Passwds;
-import com.projects.passwc.data.PasswdsRepository;
+import com.projects.passwc.DTO.PasswdsDTO;
 import com.projects.passwc.response.PasswdsResponse;
-import com.projects.passwc.DTO.PasswdForm;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.projects.passwc.service.PasswdsService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -12,26 +11,24 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.security.Principal;
 
 
 @Controller
 @RequestMapping("/passwds")
 public class PasswdsController {
 
-    private final PasswdsRepository passwdsRepository;
+    private final PasswdsService passwdsService;
 
-    @Autowired
-    public PasswdsController(PasswdsRepository passwdsRepository) {
-        this.passwdsRepository = passwdsRepository;
+    public PasswdsController(PasswdsService passwdsService) {
+        this.passwdsService = passwdsService;
     }
 
     @GetMapping
     public PasswdsResponse passwds(
             @RequestParam(value = "page", defaultValue = "0") int pageNumber,
-            Principal principal) {
+            Authentication username) {
 
-        return passwdsRepository.showPasswds(pageNumber, passwdsRepository.findAllUserPasswds(principal.getName()));
+        return passwdsService.getAllUserPasswds(pageNumber, username.getName());
     }
 
 //    @GetMapping
@@ -42,38 +39,37 @@ public class PasswdsController {
 //        return passwdsRepository.showPasswds(pageNumber, passwdsRepository.searchPasswds(principal.getName(), query));
 //    }
 
-    @GetMapping("/addPasswd")
+    @GetMapping("/add")
     public String showPasswordForm(Model model) {
-        model.addAttribute("passwdForm", new PasswdForm());
+        model.addAttribute("passwdForm", new PasswdsDTO());
         return "passwdForm";
     }
 
     @GetMapping("/generatePassword")
     @ResponseBody
     public String generatePassword(
-            @ModelAttribute PasswdForm passwdForm,
-            @RequestParam(name = "useLower", required = false, defaultValue = "false") boolean useLower,
+            @ModelAttribute PasswdsDTO passwdForm,
+            @RequestParam(name = "useLower", required = false, defaultValue = "true") boolean useLower,
             @RequestParam(name = "useUpper", required = false, defaultValue = "false") boolean useUpper,
             @RequestParam(name = "useDigits", required = false, defaultValue = "false") boolean useDigits,
             @RequestParam(name = "usePunctuation", required = false, defaultValue = "false") boolean usePunctuation,
             @RequestParam(name = "length", required = false, defaultValue = "0") int length) {
 
-        return passwdForm.generatePasswd(useLower, useUpper, useDigits, usePunctuation, length);
+        if (length > 5 && (useLower || useUpper || useDigits || usePunctuation))
+            return passwdsService.generatePasswd(useLower, useUpper, useDigits, usePunctuation, length);
+        return null;
     }
 
-    @PostMapping("/addPasswd")
-    public String savePasswd(@Valid PasswdForm passwdForm,
+    @PostMapping("/add")
+    public String savePasswd(@Valid PasswdsDTO passwdForm,
                              Errors errors,
-                             Principal principal) throws IllegalStateException, IOException {
-
-        String username = principal.getName();
-        Passwds passwds;
+                             Authentication username) throws IllegalStateException, IOException {
 
         if (errors.hasErrors())
             return "passwdForm";
 
-        passwds = passwdForm.toPasswds(username);
-        passwdsRepository.save(passwds);
+        passwdsService.save(passwdForm, username.getName());
+
         return "redirect:/passwds";
     }
 
