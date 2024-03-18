@@ -1,6 +1,5 @@
 package com.projects.passwc.web;
 
-import com.projects.passwc.Entitys.User;
 import com.projects.passwc.DTO.UserRegisterDTO;
 import com.projects.passwc.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -31,7 +30,9 @@ public class UserRegisterController {
                                       Errors errors) throws IllegalStateException, IOException {
         if (errors.hasErrors()) return "register_form";
 
-        User registredUser = userService.register(userRegisterDTO);
+        if (userService.isValid(userRegisterDTO.getUsername())) //add return validation message
+
+        userService.register(userRegisterDTO);
 
         return "redirect:/user/profile";
     }

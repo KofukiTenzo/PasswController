@@ -13,12 +13,12 @@ public class UserService {
 
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder){
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User register(UserRegisterDTO input){
+    public User register(UserRegisterDTO input) {
         User user = new User(
                 input.getUsername(),
                 input.getEmail(),
@@ -28,8 +28,12 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getAuthentication(String username){
+    public User getAuthentication(String username) {
 
         return userRepository.findByUsername(username);
+    }
+
+    public boolean isValid(String username) {
+        return userRepository.findByUsername(username) == null;
     }
 }
