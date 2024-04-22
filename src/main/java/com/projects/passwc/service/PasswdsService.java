@@ -30,7 +30,11 @@ public class PasswdsService {
 
         User user = userService.getAuthentication(username);
 
-        return paginatedPasswds(page, passwdsRepository.findAllByUser(user));
+        List<Passwds> passwdsObj = passwdsRepository.findAllByUser(user);
+
+        passwdsObj.sort(((o1, o2) -> o2.getCreation_date().compareTo(o1.getCreation_date())));
+
+        return paginatedPasswds(page, passwdsObj);
     }
 
     @PreAuthorize("#username == authentication.principal.username")

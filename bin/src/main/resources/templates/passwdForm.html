@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html" charset="UTF-8">
+    <title>Passwds</title>
+
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{../static/css/style.css}"/>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id="header" th:include="page :: header"></div>
+
+<div id="content">
+    <div class="passwdsDTO">
+        <h1>Add Passwd</h1>
+        <form id="passwdsForm" method="post" th:object="${passwdsDTO}" th:action="@{/passwds/addPasswd}">
+            <div>
+                <label>App name:</label><br/>
+                <input id="resourceName_field" type="text" th:field="*{resourceName}"/>
+                <span class="error" th:if="${#fields.hasErrors('resourceName')}" th:errors="*{resourceName}"></span>
+            </div>
+
+            <div>
+                <label>Password:</label><br/>
+                <input id="passwd_field" type="text" th:field="*{passwd}"/>
+                <span class="error" th:if="${#fields.hasErrors('passwd')}" th:errors="*{passwd}"></span>
+            </div>
+
+            <input id="addPass" type="submit" value="Add password"/>
+
+        </form>
+
+
+        <label>
+            <input id="useLower" type="checkbox" th:field="${passwdsDTO.useLower}"> a-z
+        </label>
+        <label>
+            <input id="useUpper" type="checkbox" th:field="${passwdsDTO.useUpper}"> A-Z
+        </label>
+        <label>
+            <input id="useDigits" type="checkbox" th:field="${passwdsDTO.useDigits}"> 0-9
+        </label>
+        <label>
+            <input id="usePunctuation" type="checkbox" th:field="${passwdsDTO.usePunctuation}"> @%
+        </label>
+        <label>
+            <input id="length" type="number" th:field="${passwdsDTO.length}"> Length
+        </label>
+
+        <button id="generate">Generate</button>
+
+        <script th:inline="javascript">
+            document.getElementById('generate').addEventListener('click', function() {
+                var useLower = document.getElementById('useLower').checked;
+                var useUpper = document.getElementById('useUpper').checked;
+                var useDigits = document.getElementById('useDigits').checked;
+                var usePunctuation = document.getElementById('usePunctuation').checked;
+                var length = document.getElementById('length').value;
+
+                fetch('/passwds/generatePassword?useLower=' + useLower + '&useUpper=' + useUpper + '&useDigits=' + useDigits + '&usePunctuation=' + usePunctuation + '&length=' + length)
+                    .then(response => response.text())
+                    .then(generatedPassword => {
+                        document.getElementById('passwd_field').value = generatedPassword;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        </script>
+
+
+    </div>
+
+    <div id="footer" th:include="page :: copy"></div>
+</body>
+</html>

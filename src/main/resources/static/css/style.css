@@ -149,10 +149,16 @@ background-color: #D6685a;
 }
 
 .error {
+    color: red;
+    font-family: Outfit;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+
     display: block;
     margin-top: -8px; /* Змініть значення за потреби, щоб підняти помилку ближче до форми */
-    font-size: 14px; /* Зменшити розмір шрифту на 2 пікселі */
-    color: red; /* Колір тексту помилки */
+    margin-left: 22px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');

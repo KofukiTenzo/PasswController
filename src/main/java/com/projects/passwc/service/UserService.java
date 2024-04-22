@@ -1,10 +1,13 @@
 package com.projects.passwc.service;
 
-import com.projects.passwc.Entitys.User;
 import com.projects.passwc.DTO.UserRegisterDTO;
+import com.projects.passwc.Entitys.User;
 import com.projects.passwc.data.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -29,11 +32,25 @@ public class UserService {
     }
 
     public User getAuthentication(String username) {
-
-        return userRepository.findByUsername(username);
+        return userRepository.findUserByUsername(username).get();
     }
 
-    public boolean isValid(String username) {
-        return userRepository.findByUsername(username) == null;
+    @Transactional
+    public Optional<User> findUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
     }
+
+    @Transactional
+    public Optional<User> findUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
+    }
+
+    public boolean userExistByEmail(String email) {
+        return findUserByEmail(email).isPresent();
+    }
+
+    public boolean userExistByUsername(String username) {
+        return findUserByUsername(username).isPresent();
+    }
+
 }

@@ -15,7 +15,7 @@
     <div id="contentRegister">
         <h1>Register</h1>
 
-        <form id="formReg" th:action="@{/register}" th:object="${userRegisterForm}" method="post">
+        <form id="formReg" th:action="@{/register}" th:object="${userRegisterDTO}" method="post">
             <div>
                 <input id="register_username_field" type="text" th:field="*{username}" placeholder="Username"/>
                 <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>

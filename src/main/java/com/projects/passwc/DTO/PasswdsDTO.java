@@ -1,16 +1,18 @@
 package com.projects.passwc.DTO;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotBlank;
 
 public class PasswdsDTO {
 
-    @Size(max = 20)
+    @NotBlank(message = "Enter resource name")
     private String resourceName;
 
-    @NotEmpty
-    @Size(max = 20)
+    @NotBlank(message = "Enter or generate password")
     private String passwd;
+
+    public PasswdsDTO(){
+
+    }
 
     public String getResourceName() {
         return resourceName;

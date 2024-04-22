@@ -32,7 +32,8 @@ public class UserRegisterControllerTest {
                         .param("password", "testPasswd")
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/user/profile"));
+                .andExpect(redirectedUrl("/user/profile"))
+                .andExpect(redirectedUrl("/user/login"));
     }
 
     @Test
