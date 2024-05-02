@@ -1,33 +1,34 @@
-package com.projects.passwc.DAO;
+package com.projects.passwc.Entitys;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
-@Table(name = "passwds")
+@Table(name = "PASSWDS")
 public class Passwds {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "user")
-    private String user;
-
-    @Column(name = "resource_name")
+    @Column(name = "RESOURCE_NAME")
     private String resourceName;
-    @Column(name = "passwd")
+
+    @Column(name = "PASSWD")
     private String passwd;
-    @Column(name = "creation_date")
-    private Date creation_date;
+
+    @Column(name = "CREATION_DATE")
+    private String creation_date;
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Passwds() {}
 
-    public Passwds(String user, String resourceName, String passwd){
-        this.user = user;
+    public Passwds(String resourceName, String passwd, String creation_date){
         this.resourceName = resourceName;
         this.passwd = passwd;
-        this.creation_date = new Date();
+        this.creation_date = creation_date;
     }
 
     public Long getId() {
@@ -42,13 +43,16 @@ public class Passwds {
         return passwd;
     }
 
-    public Date getCreation_date() {
+    public String getCreation_date() {
         return creation_date;
     }
 
-    public String getUser() {
+    public User getUser() {
         return user;
     }
-}
 
+    public void assignUser(User user) {
+        this.user = user;
+    }
+}
 

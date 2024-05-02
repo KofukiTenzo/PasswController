@@ -1,6 +1,6 @@
 package com.projects.passwc.response;
 
-import com.projects.passwc.DAO.Passwds;
+import com.projects.passwc.Entitys.Passwds;
 import lombok.Data;
 
 import java.util.List;

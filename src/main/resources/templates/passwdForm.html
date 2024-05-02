@@ -16,7 +16,7 @@
 <div id="content">
     <div class="passwdForm">
         <h1>Add Passwd</h1>
-        <form id="passwdsForm" method="post" th:object="${passwdForm}" th:action="@{/passwds/addPasswd}">
+        <form id="passwdsForm" method="post" th:object="${passwdForm}" th:action="@{/passwds/add}">
             <div>
                 <input id="resourceName_field" type="text" th:field="*{resourceName}" placeholder="App name"/>
                 <span class="error" th:if="${#fields.hasErrors('resourceName')}" th:errors="*{resourceName}"></span>
