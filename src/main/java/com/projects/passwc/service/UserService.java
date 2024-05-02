@@ -43,7 +43,6 @@ public class UserService {
     @Transactional
     public Optional<User> findUserByUsername(String username) {
         return userRepository.findUserByUsername(username);
-    }
 
     public boolean userExistByEmail(String email) {
         return findUserByEmail(email).isPresent();
