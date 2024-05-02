@@ -1,0 +1,214 @@
+h1, label {
+    color: #172a3a;
+    text-align: center;
+}
+
+body {
+    background-color: #508991;
+}
+
+#register {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 8px;
+}
+
+#login {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 105px;
+}
+
+#logout {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 8px;
+}
+
+#profileBtn {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 105px;
+}
+
+#passwdsList {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 20px 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 635px;
+}
+
+#addPasswd {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 20px 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 490px;
+}
+
+#generatePass {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 11px 17px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    position: absolute;
+    right: 400px;
+}
+
+#passwds {
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#footer {
+    color: #172a3a;
+    position: absolute;
+    top: 99vh;
+    transform: translateY(-100%);
+    width: 99%;
+}
+
+#logo {
+    width: 110px;
+    height: 85px;
+}
+
+#content {
+    color: #172a3a;
+}
+
+#contentRegister,
+#contentLogin {
+    border-radius: 5px;
+    background-color: #508991;
+    padding: 20px;
+    color: #172a3a;
+
+}
+
+input[type=text],
+input[type=password] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #74b3ce;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #172a3a;
+}
+
+#registerBtn,
+#loginBtn {
+    width: 25%;
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#addPass{
+    width: 30%;
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#generate{
+    width: 5%;
+    background-color: #09bc8a;
+    color: #172a3a;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#formLogin, #formReg{
+    position: absolute; /* set the form's position to absolute */
+    top: 0; /* set the top position to 0 */
+    bottom: 0; /* set the bottom position to 0 */
+    left: 550px; /* set the left position to 0 */
+    right: 0; /* set the right position to 0 */
+    margin: auto; /* set the margins to "auto" */
+    width: 50%; /* set the width of the form */
+    height: 50%; /* set the height of the form */
+}
+
+/*.error {*/
+/*    color: red;*/
+/*    display: block;*/
+/*    margin-top: 5px;*/
+/*}*/
+
+.error {
+    display: block;
+    margin-top: -8px; /* Змініть значення за потреби, щоб підняти помилку ближче до форми */
+    font-size: 14px; /* Зменшити розмір шрифту на 2 пікселі */
+    color: red; /* Колір тексту помилки */
+}
+

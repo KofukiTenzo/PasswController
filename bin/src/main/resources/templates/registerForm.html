@@ -1,0 +1,45 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{../static/css/style.css}"></link>
+    <link>
+</head>
+<body>
+<div>
+    <div id="header" th:include="page :: header"></div>
+
+    <div id="contentRegister">
+        <h1>Register</h1>
+
+        <form id="formReg" th:action="@{/register}" th:object="${userRegisterDTO}" method="post">
+            <div>
+                <label>Username:</label><br/>
+                <input id="register_username_field" type="text" th:field="*{username}" />
+                <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+            </div>
+
+            <div>
+                <label>Email:</label><br/>
+                <input id="register_email_field" type="text" th:field="*{email}" />
+                <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </div>
+
+            <div>
+                <label>Password:</label><br/>
+                <input id="register_password_field" type="password" th:field="*{password}" />
+                <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+            </div>
+
+            <button id="registerBtn" type="submit">Register</button>
+        </form>
+
+    </div>
+
+    <div id="footer" th:include="page :: copy"></div>
+</div>
+</body>
+</html>

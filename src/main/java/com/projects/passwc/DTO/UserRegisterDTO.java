@@ -1,20 +1,25 @@
 package com.projects.passwc.DTO;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotBlank;
 
 public class UserRegisterDTO {
 
-    @Size(min = 4, max = 20/*, message = "Username must be between {min} and {max} characters long."*/)
+    @NotBlank(message = "Enter your username")
     private String username;
 
-    @NotEmpty
-    @Email
+    @NotBlank(message = "Enter your email")
+    @Email(message = "Enter a valid email address")
     private String email;
 
-    @Size(min = 6, max = 16/*, message = "Password must be between {min} and {max} characters long."*/)
+    @NotBlank(message = "Enter your password")
+    @Length(min = 6, message = "Password must be at least 6 characters")
     private String password;
+
+    public UserRegisterDTO() {
+    }
 
     public String getUsername() {
         return username;

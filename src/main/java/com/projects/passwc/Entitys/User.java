@@ -10,17 +10,17 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "USER"/*, uniqueConstraints = {@UniqueConstraint(columnNames = {"EMAIL", "USERNAME"})}*/)
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "USERNAME")
+    @Column(name = "USERNAME"/*, unique = true*/)
     private String username;
 
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL"/*, unique = true*/)
     private String email;
 
     @Column(name = "PASSWORD")

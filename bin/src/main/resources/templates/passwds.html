@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html" charset="UTF-8">
+    <title>Passwds</title>
+
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{../static/css/style.css}"/>
+</head>
+<body>
+<div id="header" th:include="page :: header"></div>
+
+    <div class="listTitle">
+        <h1>Recent Passwds</h1>
+        <ul class="passwdsList">
+            <li th:each="passwds : ${passwdsList}" th:id="'passwd_' + ${passwds.id}">
+
+                <div>
+                    <label>Name</label>:
+                    <span class="resource_name" th:text="${passwds.resourceName}"></span>
+
+                    <label>Password</label>:
+                    <span class="passwd" th:text="${passwds.passwd}"></span>
+                </div>
+
+                <div>
+                    <label>Timestamp</label>:
+                    <span class="time" th:text="${passwds.creation_date}"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="footer" th:include="page :: copy"></div>
+</body>
+</html>
