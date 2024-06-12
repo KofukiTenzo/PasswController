@@ -1,9 +1,9 @@
-FROM openjdk:17
+FROM eclipse-temurin
 
-WORKDIR /app
+ARG JAR_FILE=target/*.jar
 
-COPY target/passwc.jar /app/passwc.jar
+COPY ${JAR_FILE} passwc.jar
 
 EXPOSE 8081
 
-CMD ["java", "-jar", "/app/passwc.jar"]
+ENTRYPOINT ["java", "-jar", "/passwc.jar"]
