@@ -1,9 +1,9 @@
-FROM eclipse-temurin
+FROM eclipse-temurin:17-jre-alpine
 
-ARG JAR_FILE=target/*.jar
+WORKDIR /opt/app
 
-COPY ${JAR_FILE} passwc.jar
+COPY --from=builder /opt/app/target/*.jar /opt/app/*.jar
 
-EXPOSE 8081
+EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "/passwc.jar"]
+ENTRYPOINT ["java", "-jar", "/opt/app/*.jar"]
