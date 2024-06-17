@@ -3,7 +3,7 @@ package com.projects.passwc.Entitys;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "PASSWDS")
+@Table(name = "passwds")
 public class Passwds {
 
     @Id
