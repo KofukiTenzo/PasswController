@@ -1,9 +1,9 @@
-FROM eclipse-temurin:17-jre-alpine
+FROM openjdk:17-jdk-slim
 
-WORKDIR /opt/app
+ARG JAR_FILE=~/target/*.jar
 
-COPY --from=builder /opt/app/target/*.jar /opt/app/*.jar
+COPY ${JAR_FILE} app.jar
 
 EXPOSE 8081
 
-ENTRYPOINT ["java", "-jar", "/opt/app/*.jar"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]
