@@ -10,9 +10,7 @@ public class PasswdsDTO {
     @NotBlank(message = "Enter or generate password")
     private String passwd;
 
-    public PasswdsDTO(){
-
-    }
+    public PasswdsDTO(){}
 
     public String getResourceName() {
         return resourceName;

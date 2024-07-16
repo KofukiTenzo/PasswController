@@ -52,5 +52,4 @@ public class UserService {
     public boolean userExistByUsername(String username) {
         return findUserByUsername(username).isPresent();
     }
-
 }

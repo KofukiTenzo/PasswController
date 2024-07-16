@@ -72,6 +72,4 @@ public class PasswdsController {
 
         return "redirect:/passwds";
     }
-
-
 }
