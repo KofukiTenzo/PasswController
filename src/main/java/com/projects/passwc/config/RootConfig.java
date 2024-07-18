@@ -9,7 +9,6 @@ import org.springframework.core.type.filter.RegexPatternTypeFilter;
 import java.util.regex.Pattern;
 
 @Configuration
-//@Import(DataConfig.class)
 @ComponentScan(basePackages={"com.projects.passwc"},
         excludeFilters={
                 @Filter(type=FilterType.CUSTOM, value= RootConfig.WebPackage.class)

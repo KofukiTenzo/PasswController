@@ -10,17 +10,17 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "USER"/*, uniqueConstraints = {@UniqueConstraint(columnNames = {"EMAIL", "USERNAME"})}*/)
+@Table(name = "USER")
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "USERNAME"/*, unique = true*/)
+    @Column(name = "USERNAME")
     private String username;
 
-    @Column(name = "EMAIL"/*, unique = true*/)
+    @Column(name = "EMAIL")
     private String email;
 
     @Column(name = "PASSWORD")
@@ -52,6 +52,18 @@ public class User implements UserDetails {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

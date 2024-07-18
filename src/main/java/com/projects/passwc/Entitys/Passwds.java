@@ -47,6 +47,26 @@ public class Passwds {
         return creation_date;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
+    }
+
+    public void setCreation_date(String creation_date) {
+        this.creation_date = creation_date;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public User getUser() {
         return user;
     }
