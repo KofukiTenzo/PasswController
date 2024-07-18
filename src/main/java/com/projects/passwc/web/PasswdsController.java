@@ -24,11 +24,14 @@ public class PasswdsController {
     }
 
     @GetMapping
-    public PasswdsResponse passwds(
+    public String passwds(
             @RequestParam(value = "page", defaultValue = "0") int pageNumber,
-            Authentication username) {
+            Authentication username, Model model) {
 
-        return passwdsService.getAllUserPasswds(pageNumber, username.getName());
+        PasswdsResponse response = passwdsService.getAllUserPasswds(pageNumber, username.getName());
+        model.addAttribute("response", response);
+        
+        return "passwds";
     }
 
 //    @GetMapping

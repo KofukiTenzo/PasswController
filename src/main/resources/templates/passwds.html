@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta content="text/html" charset="UTF-8">
+    <meta content="text/html" charset="UTF-8"/>
     <title>Passwds</title>
 
     <link rel="stylesheet"
@@ -24,7 +24,7 @@
             <label id="labeTime">Timestamp:</label>
         </div>
 
-        <div th:each="passwds : ${passwdsResponse.passwdsList}" th:id="'passwd_' + ${passwds.id}" class="grid-item">
+        <div th:each="passwds : ${response.passwdsList}" th:id="'passwd_' + ${passwds.id}" class="grid-item">
             <div class="itemCell">
                 <span id="name" class="resource_name" th:text="${passwds.resourceName}"></span>
 
@@ -34,45 +34,46 @@
             </div>
         </div>
 
-<!--         Pagination -->
+        <!--         Pagination -->
         <div class="pagination_container">
-            <nav aria-label="Pagination" th:if="${passwdsResponse.totalPages > 1}">
+            <nav aria-label="Pagination" th:if="${response.totalPages > 1}">
                 <ul class="page">
 
-                    <li class="page-item" th:classappend="${passwdsResponse.pageNumber + 1 == 1} ? 'disabled'">
-                        <a th:classappend="${passwdsResponse.pageNumber + 1 == 1} ? 'disabled'" th:replace="paging :: paging(1, '<<', 'First Page')"></a>
+                    <li class="page-item" th:classappend="${response.pageNumber + 1 == 1} ? 'disabled'">
+                        <a th:classappend="${response.pageNumber + 1 == 1} ? 'disabled'"
+                           th:replace="paging :: paging(1, '<<', 'First Page')"></a>
                     </li>
 
-                    <li class="page-item" th:classappend="${passwdsResponse.pageNumber + 1 == 1} ? 'disabled'">
-                        <a th:replace="paging :: paging(${passwdsResponse.pageNumber}, '<', 'Previous Page')"></a>
+                    <li class="page-item" th:classappend="${response.pageNumber + 1 == 1} ? 'disabled'">
+                        <a th:replace="paging :: paging(${response.pageNumber}, '<', 'Previous Page')"></a>
                     </li>
 
-                    <li class="page-item" th:if="${passwdsResponse.pageNumber - 2 > 1}">
+                    <li class="page-item" th:if="${response.pageNumber - 2 > 1}">
                         <a class="page-link" href="">...</a>
                     </li>
 
                     <li class="page-item"
-                        th:each="page : ${#numbers.sequence(passwdsResponse.pageNumber > 2 ? passwdsResponse.pageNumber - 2 : 1, passwdsResponse.pageNumber + 2 < passwdsResponse.totalPages ? passwdsResponse.pageNumber + 2 : passwdsResponse.totalPages)}"
-                        th:classappend="${passwdsResponse.pageNumber + 1 == page} ? 'current'">
+                        th:each="page : ${#numbers.sequence(response.pageNumber > 2 ? response.pageNumber - 2 : 1, response.pageNumber + 2 < response.totalPages ? response.pageNumber + 2 : response.totalPages)}"
+                        th:classappend="${response.pageNumber + 1 == page} ? 'current'">
                         <a th:replace="paging :: paging(${page}, ${page}, 'page ' + ${page})"></a>
                     </li>
 
-                    <li class="page-item" th:if="${passwdsResponse.pageNumber + 2 < passwdsResponse.totalPages}">
+                    <li class="page-item" th:if="${response.pageNumber + 2 < response.totalPages}">
                         <a class="page-link" href="">...</a>
                     </li>
 
-                    <li class="page-item" th:classappend="${passwdsResponse.pageNumber + 1 == passwdsResponse.totalPages} ? 'disabled'">
-                        <a th:replace="paging :: paging(${passwdsResponse.pageNumber + 2},'>', 'Next Page')"></a>
+                    <li class="page-item"
+                        th:classappend="${response.pageNumber + 1 == response.totalPages} ? 'disabled'">
+                        <a th:replace="paging :: paging(${response.pageNumber + 2},'>', 'Next Page')"></a>
                     </li>
 
-                    <li class="page-item" th:classappend="${passwdsResponse.pageNumber + 1 == passwdsResponse.totalPages} ? 'disabled'">
-                        <a th:replace="paging :: paging(${passwdsResponse.totalPages}, '>>', 'Last Page')"></a>
+                    <li class="page-item"
+                        th:classappend="${response.pageNumber + 1 == response.totalPages} ? 'disabled'">
+                        <a th:replace="paging :: paging(${response.totalPages}, '>>', 'Last Page')"></a>
                     </li>
                 </ul>
             </nav>
         </div>
-    </div>
-
     </div>
 
 </div>

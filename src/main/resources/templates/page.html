@@ -10,7 +10,7 @@
 <!--            </a>-->
 
     <div sec:authorize="isAuthenticated()" class="dropdown">
-        <input type="checkbox" id="dropdown">
+        <input type="checkbox" id="dropdown"/>
         <label for="dropdown">
             <img class="dropbtn" th:src="@{../static/img/account.png}" border="0"/>
         </label>
@@ -30,7 +30,7 @@
        sec:authorize="!isAuthenticated()" id="login" th:href="@{/login}">Login</a>
 </div>
 
-<div class="footer" th:fragment="copy">Copyright &copy; Ruslan Kharchenko</div>
+<div class="footer" th:fragment="copy">Copyright &#169; Ruslan Kharchenko</div>
 </body>
 
 </html>
