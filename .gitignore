@@ -36,3 +36,5 @@ src/main/resources/application-test.properties
 
 ### VS Code ###
 .vscode/
+
+src/main/resources/application-db-credentials.properties
