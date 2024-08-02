@@ -1,9 +1,9 @@
-FROM openjdk:17-jdk-slim
+FROM openjdk:17-jdk-alpine
 
-ARG JAR_FILE=~/target/*.jar
+WORKDIR /app
 
-COPY ${JAR_FILE} app.jar
+COPY target/*.jar /app/passwc.jar
 
-EXPOSE 8081
+EXPOSE 8000
 
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+CMD ["java", "-jar", "/app/passwc.jar"]
