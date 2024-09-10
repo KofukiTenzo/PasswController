@@ -21,5 +21,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy from DockerHub') {
+            steps {
+                echo 'Containering from DockerHub'
+                sh 'docker run --name passwc --restart always -d --cpus="1.0" -p 8000:8000 kofuki/passwc:latest'
+            }
+        }
+        
     }
 }
