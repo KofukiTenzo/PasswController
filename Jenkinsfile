@@ -22,6 +22,20 @@ pipeline {
             }
         }
 
+        stage('Update Docker Image') {
+            steps {
+                echo 'Updating passwc image on latest'
+                sh 'docker pull kofuki/passwc:latest'
+            }
+        }
+
+        stage('Stop old container') {
+            steps {
+                echo 'Stoping old passwc container'
+                sh 'docker stop passwc'
+            }
+        }
+
         stage('Deploy from DockerHub') {
             steps {
                 echo 'Containering from DockerHub'
