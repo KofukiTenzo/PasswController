@@ -29,10 +29,13 @@ pipeline {
             }
         }
 
-        stage('Stop old container') {
+        stage('Stop and remove old container') {
             steps {
                 echo 'Stoping old passwc container'
                 sh 'docker stop passwc'
+
+                echo 'Removing old passwc container'
+                sh 'docker rm passwc'
             }
         }
 
